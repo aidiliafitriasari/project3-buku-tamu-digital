@@ -1,0 +1,188 @@
+:root {
+  --primary: #00309f;
+  --primary-dark: #00257e;
+  --bg: #f4f7fb;
+  --text: #172033;
+  --muted: #64748b;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(0, 48, 159, 0.12), transparent 28%),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(14, 165, 233, 0.1),
+      transparent 28%
+    ),
+    var(--bg);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+}
+
+.login-wrapper {
+  width: 100%;
+  max-width: 440px;
+}
+
+.glass-card {
+  position: relative;
+
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+
+  border-radius: 28px;
+
+  padding: 38px;
+
+  box-shadow:
+    0 25px 60px rgba(15, 23, 42, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+.brand-icon {
+  width: 68px;
+  height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 20px;
+
+  border-radius: 20px;
+
+  background: linear-gradient(145deg, #00309f, #174fc7);
+
+  color: white;
+
+  font-size: 28px;
+
+  box-shadow: 0 12px 28px rgba(0, 48, 159, 0.24);
+}
+
+.login-title {
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: -0.4px;
+}
+
+.login-subtitle {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.form-label {
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.input-group {
+  border-radius: 14px;
+  overflow: hidden;
+
+  background: rgba(248, 250, 252, 0.9);
+
+  border: 1px solid #e2e8f0;
+
+  transition: 0.2s ease;
+}
+
+.input-group:focus-within {
+  border-color: rgba(0, 48, 159, 0.55);
+
+  box-shadow: 0 0 0 4px rgba(0, 48, 159, 0.08);
+}
+
+.input-group-text {
+  border: 0;
+  background: transparent;
+  color: #64748b;
+}
+
+.form-control {
+  border: 0;
+  background: transparent;
+
+  padding: 13px 12px;
+
+  font-size: 14px;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  background: transparent;
+}
+
+.login-button {
+  width: 100%;
+
+  border: 0;
+  border-radius: 14px;
+
+  padding: 13px 18px;
+
+  background: linear-gradient(135deg, #021544, #00309f);
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  box-shadow: 0 10px 24px rgba(0, 48, 159, 0.22);
+
+  transition: 0.2s ease;
+}
+
+.login-button:hover {
+  transform: translateY(-1px);
+
+  box-shadow: 0 14px 28px rgba(0, 48, 159, 0.28);
+
+  color: white;
+}
+
+.login-button:active {
+  transform: translateY(0);
+}
+
+.alert {
+  border: 0;
+  border-radius: 14px;
+  font-size: 13px;
+}
+
+.footer-text {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+@media (max-width: 576px) {
+  body {
+    padding: 16px;
+  }
+
+  .glass-card {
+    padding: 28px 22px;
+    border-radius: 24px;
+  }
+
+  .brand-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+}
