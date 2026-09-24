@@ -20,14 +20,14 @@ class RoleFilter implements FilterInterface
         if (empty($arguments)) {
             return service('response')
                 ->setStatusCode(403)
-                ->setBody('403 Forbidden');
+                ->setBody(view('errors/html/error_403'));
         }
 
         // Jika role user tidak termasuk role yang diperbolehkan, akses ditolak.
         if (! in_array($userRole, $arguments, true)) {
             return service('response')
                 ->setStatusCode(403)
-                ->setBody('403 Forbidden');
+                ->setBody(view('errors/html/error_403'));
         }
     }
 

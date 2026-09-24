@@ -1,84 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
+
 <head>
     <meta charset="utf-8">
-    <title><?= lang('Errors.pageNotFound') ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        div.logo {
-            height: 200px;
-            width: 155px;
-            display: inline-block;
-            opacity: 0.08;
-            position: absolute;
-            top: 2rem;
-            left: 50%;
-            margin-left: -73px;
-        }
-        body {
-            height: 100%;
-            background: #fafafa;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            color: #777;
-            font-weight: 300;
-        }
-        h1 {
-            font-weight: lighter;
-            letter-spacing: normal;
-            font-size: 3rem;
-            margin-top: 0;
-            margin-bottom: 0;
-            color: #222;
-        }
-        .wrap {
-            max-width: 1024px;
-            margin: 5rem auto;
-            padding: 2rem;
-            background: #fff;
-            text-align: center;
-            border: 1px solid #efefef;
-            border-radius: 0.5rem;
-            position: relative;
-        }
-        pre {
-            white-space: normal;
-            margin-top: 1.5rem;
-        }
-        code {
-            background: #fafafa;
-            border: 1px solid #efefef;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            display: block;
-        }
-        p {
-            margin-top: 1.5rem;
-        }
-        .footer {
-            margin-top: 2rem;
-            border-top: 1px solid #efefef;
-            padding: 1em 2em 0 2em;
-            font-size: 85%;
-            color: #999;
-        }
-        a:active,
-        a:link,
-        a:visited {
-            color: #dd4814;
-        }
-    </style>
+    <title>Halaman Tidak Ditemukan</title>
+
+    <!-- Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css"
+        rel="stylesheet">
+
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="<?= base_url('assets/css/tokens.css') ?>">
+
+    <!-- Error CSS -->
+    <link rel="stylesheet" href="<?= base_url('assets/css/error.css') ?>">
 </head>
-<body>
-    <div class="wrap">
-        <h1>404</h1>
 
-        <p>
-            <?php if (ENVIRONMENT !== 'production') : ?>
-                <?= nl2br(esc($message)) ?>
-            <?php else : ?>
-                <?= lang('Errors.sorryCannotFind') ?>
-            <?php endif; ?>
-        </p>
-    </div>
+<body>
+
+    <?php
+    helper('institution');
+
+    $role = session()->get('role');
+
+    $redirectUrl = match ($role) {
+        'administrator' => base_url('admin/dashboard'),
+        'petugas' => base_url('petugas/dashboard'),
+        default => base_url('akses-panel'),
+    };
+
+    $redirectLabel = $role
+        ? 'Kembali ke Dashboard'
+        : 'Kembali ke Halaman Login';
+    ?>
+
+    <main class="error-wrapper">
+
+        <div class="error-card">
+
+            <div class="error-icon">
+                <i class="bi bi-compass"></i>
+            </div>
+
+            <p class="error-code">404</p>
+
+            <h1 class="error-title">
+                Halaman Tidak Ditemukan
+            </h1>
+
+            <p class="error-description">
+                Halaman yang kamu cari tidak tersedia
+                atau alamat yang dimasukkan tidak benar.
+            </p>
+
+            <a href="<?= esc($redirectUrl) ?>" class="error-action">
+                <?= esc($redirectLabel) ?>
+            </a>
+
+            <p class="error-footer">
+                <?= esc(institution_name()) ?>
+            </p>
+
+        </div>
+
+    </main>
+
 </body>
+
 </html>

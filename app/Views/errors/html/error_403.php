@@ -2,11 +2,10 @@
 <html lang="id">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex">
 
-    <title>Terjadi Kesalahan</title>
+    <title>Akses Ditolak</title>
 
     <!-- Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,39 +20,51 @@
         rel="stylesheet">
 
     <!-- Design Tokens -->
-    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="<?= base_url('assets/css/tokens.css') ?>">
 
     <!-- Error CSS -->
-    <link rel="stylesheet" href="/assets/css/error.css">
+    <link rel="stylesheet" href="<?= base_url('assets/css/error.css') ?>">
 </head>
 
 <body>
+
+    <?php
+    helper('institution');
+
+    $role = session()->get('role');
+
+    $dashboardUrl = match ($role) {
+        'administrator' => base_url('admin/dashboard'),
+        'petugas' => base_url('petugas/dashboard'),
+        default => base_url('akses-panel'),
+    };
+    ?>
 
     <main class="error-wrapper">
 
         <div class="error-card">
 
             <div class="error-icon">
-                <i class="bi bi-server"></i>
+                <i class="bi bi-shield-lock"></i>
             </div>
 
-            <p class="error-code">500</p>
+            <p class="error-code">403</p>
 
             <h1 class="error-title">
-                Terjadi Kesalahan
+                Akses Ditolak
             </h1>
 
             <p class="error-description">
-                Maaf, terjadi kesalahan pada sistem.
-                Silakan coba kembali beberapa saat lagi.
+                Anda tidak memiliki izin untuk mengakses halaman ini.
+                Silakan kembali ke halaman utama panel Anda.
             </p>
 
-            <a href="/" class="error-action">
-                Kembali ke Beranda
+            <a href="<?= esc($dashboardUrl) ?>" class="error-action">
+                Kembali ke Dashboard
             </a>
 
             <p class="error-footer">
-                Buku Tamu Digital
+                <?= esc(institution_name()) ?>
             </p>
 
         </div>

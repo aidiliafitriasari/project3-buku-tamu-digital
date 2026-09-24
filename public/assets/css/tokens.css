@@ -1,0 +1,84 @@
+:root {
+  /* Warna utama aplikasi */
+  --app-primary: #2d6a4f;
+  --app-primary-dark: #1a4d3d;
+  --app-primary-light: #40916c;
+  --app-primary-soft: rgba(45, 106, 79, 0.08);
+  --app-primary-soft-hover: rgba(45, 106, 79, 0.12);
+
+  /* Warna aksen dan elemen pendukung */
+  --app-gold: #52b788;
+  --app-gold-dark: #40916c;
+  --app-gold-soft: rgba(82, 183, 136, 0.12);
+
+  /* Warna dasar halaman dan material glass */
+  --app-bg: #f4f9f6;
+  --app-glass-bg: rgba(255, 255, 255, 0.78);
+  --app-glass-bg-strong: rgba(255, 255, 255, 0.92);
+  --app-glass-border: rgba(255, 255, 255, 0.72);
+  --app-glass-blur: 18px;
+  --app-glass-blur-strong: 24px;
+
+  /* Hirarki warna teks */
+  --app-text-primary: #1b2e26;
+  --app-text-secondary: #4a5c54;
+  --app-text-muted: #8a9c94;
+
+  /* Warna garis pembatas */
+  --app-border: rgba(45, 106, 79, 0.1);
+
+  /* Efek bayangan untuk elemen antarmuka */
+  --app-shadow-sm: 0 4px 16px rgba(45, 106, 79, 0.05);
+  --app-shadow-md: 0 10px 30px rgba(45, 106, 79, 0.08);
+  --app-shadow-lg:
+    0 16px 36px rgba(45, 106, 79, 0.08), 0 4px 12px rgba(45, 106, 79, 0.04);
+
+  /* Ukuran area navigasi utama */
+  --app-sidebar-width: 270px;
+  --app-navbar-height: 76px;
+
+  /* Tingkat pembulatan sudut komponen */
+  --app-radius-sm: 12px;
+  --app-radius-md: 18px;
+  --app-radius-lg: 24px;
+  --app-radius-xl: 28px;
+  --app-radius-pill: 999px;
+
+  /* Spacing scale */
+  --app-space-1: 4px;
+  --app-space-2: 8px;
+  --app-space-3: 12px;
+  --app-space-4: 16px;
+  --app-space-5: 20px;
+  --app-space-6: 24px;
+  --app-space-7: 32px;
+  --app-space-8: 40px;
+
+  /* Transisi */
+  --app-transition: 0.2s ease;
+
+  /* Warna status Menunggu */
+  --app-status-menunggu: #b45309;
+  --app-status-menunggu-bg: rgba(245, 158, 11, 0.1);
+
+  /* Warna status Masih Berkunjung */
+  --app-status-berkunjung: #047857;
+  --app-status-berkunjung-bg: rgba(16, 185, 129, 0.1);
+
+  /* Warna status Selesai */
+  --app-status-selesai: #2d6a4f;
+  --app-status-selesai-bg: rgba(45, 106, 79, 0.08);
+
+  /* Warna status Ditolak */
+  --app-status-ditolak: #b91c1c;
+  --app-status-ditolak-bg: rgba(239, 68, 68, 0.1);
+
+  /* Warna status Dibatalkan */
+  --app-status-dibatalkan: #64748b;
+  --app-status-dibatalkan-bg: rgba(100, 116, 139, 0.1);
+
+  /* Warna warning (untuk peringatan kunjungan terlalu lama) */
+  --app-warning: #b45309;
+  --app-warning-bg: rgba(245, 158, 11, 0.1);
+  --app-warning-border: rgba(245, 158, 11, 0.15);
+}

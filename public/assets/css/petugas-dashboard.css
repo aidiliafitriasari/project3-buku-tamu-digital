@@ -1,0 +1,211 @@
+.dashboard-status-badge.dashboard-status-warning {
+  color: var(--app-status-menunggu);
+  background: var(--app-status-menunggu-bg);
+}
+
+.dashboard-status-badge.dashboard-status-danger {
+  color: var(--app-status-ditolak);
+  background: var(--app-status-ditolak-bg);
+}
+
+.dashboard-status-badge.dashboard-status-info {
+  color: var(--app-status-berkunjung);
+  background: var(--app-status-berkunjung-bg);
+}
+
+.dashboard-status-badge.dashboard-status-success {
+  color: var(--app-status-selesai);
+  background: var(--app-status-selesai-bg);
+}
+
+.dashboard-status-badge.dashboard-status-secondary {
+  color: var(--app-status-dibatalkan);
+  background: var(--app-status-dibatalkan-bg);
+}
+
+/* Style tabel kunjungan pada Dashboard Petugas
+   agar konsisten dengan pendekatan iOS 26 Look. */
+
+.dashboard-monitor-card .table-responsive {
+  padding: 0 var(--app-space-3) var(--app-space-3);
+}
+
+.dashboard-monitor-card .table {
+  width: 100%;
+
+  margin-bottom: 0;
+
+  border-collapse: separate;
+  border-spacing: 0 var(--app-space-2);
+
+  font-size: 12px;
+}
+
+/* Header tabel kunjungan */
+
+.dashboard-monitor-card .table thead th {
+  padding: var(--app-space-2) var(--app-space-3);
+
+  color: var(--app-text-muted);
+
+  font-size: 10px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  border: 0;
+
+  background: transparent;
+
+  white-space: nowrap;
+}
+
+/* Baris tabel kunjungan */
+
+.dashboard-monitor-card .table tbody tr {
+  background: rgba(255, 255, 255, 0.52);
+
+  border: 1px solid var(--app-border);
+
+  border-radius: 16px;
+
+  transition:
+    transform var(--app-transition),
+    background var(--app-transition),
+    border-color var(--app-transition),
+    box-shadow var(--app-transition);
+}
+
+.dashboard-monitor-card .table tbody tr:hover {
+  background: var(--app-glass-bg-strong);
+
+  transform: translateY(-1px);
+
+  box-shadow: var(--app-shadow-sm);
+}
+
+/* Sel tabel kunjungan */
+
+.dashboard-monitor-card .table tbody td {
+  padding: var(--app-space-3);
+
+  color: var(--app-text-primary);
+
+  vertical-align: middle;
+
+  border-top: 1px solid var(--app-border);
+  border-bottom: 1px solid var(--app-border);
+}
+
+/* Sudut kiri baris tabel */
+
+.dashboard-monitor-card .table tbody td:first-child {
+  border-left: 1px solid var(--app-border);
+
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+/* Sudut kanan baris tabel */
+
+.dashboard-monitor-card .table tbody td:last-child {
+  border-right: 1px solid var(--app-border);
+
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+/* Teks kecil di dalam tabel kunjungan */
+
+.dashboard-monitor-card .table .small {
+  color: var(--app-text-muted);
+
+  font-size: 10px;
+}
+
+/* Tombol detail pada tabel kunjungan */
+
+.dashboard-monitor-card .table .btn {
+  padding: 6px var(--app-space-3);
+
+  border-radius: var(--app-radius-pill);
+
+  font-size: 10px;
+  font-weight: 600;
+
+  transition:
+    background var(--app-transition),
+    color var(--app-transition),
+    border-color var(--app-transition);
+}
+
+.dashboard-monitor-card .table .btn-outline-primary {
+  color: var(--app-primary);
+
+  background: transparent;
+
+  border: 1px solid var(--app-border);
+}
+
+.dashboard-monitor-card .table .btn-outline-primary:hover {
+  color: #ffffff;
+
+  background: var(--app-primary);
+
+  border-color: var(--app-primary);
+}
+
+/* Durasi kunjungan pada tabel peringatan */
+
+.dashboard-monitor-card .table .fw-semibold {
+  color: var(--app-text-primary);
+
+  font-weight: 600;
+}
+
+/* Penyesuaian tabel pada tablet */
+
+@media (max-width: 767.98px) {
+  .dashboard-monitor-card .table {
+    font-size: 11px;
+  }
+
+  .dashboard-monitor-card .table thead th {
+    padding: var(--app-space-2);
+
+    font-size: 9px;
+  }
+
+  .dashboard-monitor-card .table tbody td {
+    padding: var(--app-space-2);
+  }
+
+  .dashboard-monitor-card .table .btn {
+    padding: 5px var(--app-space-2);
+
+    font-size: 9px;
+  }
+}
+
+/* Penyesuaian tabel pada layar kecil */
+
+@media (max-width: 575.98px) {
+  .dashboard-monitor-card .table-responsive {
+    padding: 0 var(--app-space-2) var(--app-space-2);
+  }
+
+  .dashboard-monitor-card .table tbody tr {
+    border-radius: 12px;
+  }
+
+  .dashboard-monitor-card .table tbody td:first-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+  }
+
+  .dashboard-monitor-card .table tbody td:last-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+}

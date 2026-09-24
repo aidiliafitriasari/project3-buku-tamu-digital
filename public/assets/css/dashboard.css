@@ -1,0 +1,943 @@
+.dashboard-page {
+  color: var(--app-text-primary);
+}
+
+/* Kartu utama dashboard dengan material Liquid Glass */
+.dashboard-stat-card,
+.dashboard-master-card,
+.dashboard-chart-card,
+.dashboard-monitor-card {
+  background: var(--app-glass-bg);
+
+  border: 1px solid var(--app-glass-border);
+  border-radius: var(--app-radius-lg);
+
+  box-shadow: var(--app-shadow-md);
+
+  backdrop-filter: blur(var(--app-glass-blur));
+  -webkit-backdrop-filter: blur(var(--app-glass-blur));
+}
+
+/* Statistik utama */
+.dashboard-stat-card {
+  min-height: 132px;
+  padding: var(--app-space-5);
+
+  display: flex;
+  align-items: center;
+
+  gap: var(--app-space-4);
+
+  transition:
+    transform var(--app-transition),
+    box-shadow var(--app-transition),
+    border-color var(--app-transition);
+}
+
+.dashboard-stat-card:hover {
+  transform: translateY(-2px);
+
+  box-shadow: var(--app-shadow-lg);
+}
+
+/* Ikon statistik dan master data */
+.dashboard-stat-icon,
+.dashboard-master-icon {
+  width: 48px;
+  height: 48px;
+
+  flex: 0 0 auto;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--app-primary);
+
+  background: var(--app-primary-soft);
+
+  border-radius: 15px;
+
+  font-size: 20px;
+}
+
+/* Konten statistik */
+.dashboard-stat-content,
+.dashboard-master-card > div:last-child {
+  min-width: 0;
+}
+
+.dashboard-stat-content span,
+.dashboard-master-card span {
+  display: block;
+
+  color: var(--app-text-muted);
+
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.dashboard-stat-content strong,
+.dashboard-master-card strong {
+  display: block;
+
+  margin-top: var(--app-space-1);
+
+  color: var(--app-text-primary);
+
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Kartu ringkasan master data */
+.dashboard-master-card {
+  min-height: 112px;
+  padding: var(--app-space-5);
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  transition:
+    transform var(--app-transition),
+    box-shadow var(--app-transition);
+}
+
+.dashboard-master-card:hover {
+  transform: translateY(-2px);
+
+  box-shadow: var(--app-shadow-lg);
+}
+
+/* Header bagian dalam kartu dashboard */
+.dashboard-card-header {
+  min-height: 72px;
+  padding: var(--app-space-5) var(--app-space-5) var(--app-space-4);
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: var(--app-space-4);
+
+  border-bottom: 1px solid var(--app-border);
+}
+
+.dashboard-card-header h6 {
+  color: var(--app-text-primary);
+}
+
+.dashboard-card-header span {
+  color: var(--app-text-muted);
+
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* Link atau action pada header kartu */
+.dashboard-card-action {
+  flex: 0 0 auto;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 6px;
+
+  color: var(--app-primary);
+
+  font-size: 12px;
+  font-weight: 600;
+
+  transition:
+    color var(--app-transition),
+    gap var(--app-transition);
+}
+
+.dashboard-card-action:hover {
+  color: var(--app-primary-dark);
+  gap: 9px;
+}
+
+/* Area kartu grafik */
+.dashboard-chart-card {
+  min-height: 330px;
+
+  overflow: hidden;
+}
+
+.dashboard-chart-body {
+  min-height: 260px;
+}
+
+.dashboard-chart-wrapper {
+  position: relative;
+
+  width: 100%;
+  height: 260px;
+}
+
+/* Tampilan ketika grafik belum memiliki data */
+.dashboard-chart-placeholder {
+  min-height: 250px;
+  padding: 30px var(--app-space-5);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: var(--app-space-2);
+
+  color: var(--app-text-muted);
+
+  text-align: center;
+}
+
+.dashboard-chart-placeholder i {
+  color: rgba(45, 106, 79, 0.35);
+
+  font-size: 34px;
+}
+
+.dashboard-chart-placeholder span {
+  max-width: 220px;
+
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* Kartu monitoring kunjungan */
+.dashboard-monitor-card {
+  min-height: 300px;
+
+  overflow: hidden;
+}
+
+/* Empty state */
+.dashboard-empty-state {
+  min-height: 225px;
+  padding: 30px var(--app-space-5);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.dashboard-empty-icon {
+  width: 52px;
+  height: 52px;
+
+  margin-bottom: var(--app-space-3);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--app-primary);
+
+  background: var(--app-primary-soft);
+
+  border-radius: 16px;
+
+  font-size: 21px;
+}
+
+.dashboard-empty-state h6 {
+  margin-bottom: 5px;
+
+  color: var(--app-text-secondary);
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.dashboard-empty-state p {
+  max-width: 300px;
+
+  margin-bottom: 0;
+
+  color: var(--app-text-muted);
+
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* Daftar kunjungan pada monitoring dashboard */
+.dashboard-visit-list {
+  padding: 6px 0;
+}
+
+.dashboard-visit-item {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: var(--app-space-4);
+
+  margin: 0 12px 8px;
+  padding: 13px 14px;
+
+  color: inherit;
+  text-decoration: none;
+
+  background: rgba(255, 255, 255, 0.52);
+
+  border: 1px solid var(--app-border);
+  border-radius: 16px;
+
+  transition:
+    transform var(--app-transition),
+    background var(--app-transition),
+    border-color var(--app-transition),
+    box-shadow var(--app-transition);
+}
+
+.dashboard-visit-item:last-child {
+  margin-bottom: 0;
+}
+
+.dashboard-visit-item:hover {
+  color: inherit;
+
+  background: var(--app-glass-bg-strong);
+
+  border-color: var(--app-primary-soft-hover);
+
+  transform: translateY(-1px);
+
+  box-shadow: var(--app-shadow-sm);
+}
+
+/* Area utama informasi kunjungan */
+.dashboard-visit-main {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: var(--app-space-3);
+
+  flex: 1;
+}
+
+.dashboard-visit-avatar {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: var(--app-primary);
+
+  background: var(--app-primary-soft);
+
+  border: 1px solid rgba(45, 106, 79, 0.08);
+  border-radius: 13px;
+}
+
+.dashboard-visit-avatar i {
+  font-size: 17px;
+}
+
+/* Informasi teks kunjungan */
+.dashboard-visit-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.dashboard-visit-top {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: var(--app-space-2);
+}
+
+.dashboard-visit-top strong {
+  overflow: hidden;
+
+  color: var(--app-text-primary);
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dashboard-visit-code {
+  flex-shrink: 0;
+
+  padding: 3px 7px;
+
+  color: var(--app-primary);
+
+  background: var(--app-primary-soft);
+
+  border: 1px solid rgba(45, 106, 79, 0.08);
+  border-radius: 7px;
+
+  font-size: 9px;
+  font-weight: 600;
+}
+
+/* Metadata kunjungan */
+.dashboard-visit-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 8px 14px;
+
+  margin-top: 5px;
+
+  color: var(--app-text-muted);
+
+  font-size: 10px;
+}
+
+.dashboard-visit-meta span,
+.dashboard-visit-purpose {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 5px;
+}
+
+.dashboard-visit-meta i,
+.dashboard-visit-purpose i {
+  color: var(--app-text-muted);
+
+  font-size: 10px;
+}
+
+.dashboard-visit-purpose {
+  margin-top: 4px;
+
+  color: var(--app-text-muted);
+
+  font-size: 10px;
+}
+
+/* Area kanan item kunjungan */
+.dashboard-visit-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  gap: 6px;
+
+  flex-shrink: 0;
+}
+
+/* Badge status kunjungan */
+.dashboard-status-badge {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 4px 8px;
+
+  border-radius: var(--app-radius-pill);
+
+  font-size: 9px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.dashboard-status-badge.status-menunggu {
+  color: var(--app-status-menunggu);
+  background: var(--app-status-menunggu-bg);
+}
+
+.dashboard-status-badge.status-ditolak {
+  color: var(--app-status-ditolak);
+  background: var(--app-status-ditolak-bg);
+}
+
+.dashboard-status-badge.status-dibatalkan {
+  color: var(--app-status-dibatalkan);
+  background: var(--app-status-dibatalkan-bg);
+}
+
+.dashboard-status-badge.status-masih_berkunjung {
+  color: var(--app-status-berkunjung);
+  background: var(--app-status-berkunjung-bg);
+}
+
+.dashboard-status-badge.status-selesai {
+  color: var(--app-status-selesai);
+  background: var(--app-status-selesai-bg);
+}
+
+/* Waktu kunjungan */
+.dashboard-visit-time {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 4px;
+
+  color: var(--app-text-muted);
+
+  font-size: 9px;
+
+  white-space: nowrap;
+}
+
+.dashboard-visit-time i {
+  font-size: 9px;
+}
+
+/* Tombol arah pada item kunjungan */
+.dashboard-visit-arrow {
+  width: 26px;
+  height: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: var(--app-text-muted);
+
+  background: rgba(148, 163, 184, 0.07);
+
+  border-radius: 9px;
+
+  transition:
+    color var(--app-transition),
+    background var(--app-transition),
+    transform var(--app-transition);
+}
+
+.dashboard-visit-item:hover .dashboard-visit-arrow {
+  color: var(--app-primary);
+
+  background: var(--app-primary-soft);
+
+  transform: translateX(2px);
+}
+
+/* Header utama dashboard */
+.dashboard-header {
+  position: relative;
+
+  padding: 28px 30px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.88),
+    var(--app-primary-soft),
+    var(--app-gold-soft)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: var(--app-radius-xl);
+
+  box-shadow: var(--app-shadow-md);
+
+  backdrop-filter: blur(var(--app-glass-blur-strong));
+  -webkit-backdrop-filter: blur(var(--app-glass-blur-strong));
+
+  overflow: hidden;
+}
+
+.dashboard-header::before {
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  top: -90px;
+  right: -50px;
+
+  background: var(--app-primary-soft-hover);
+
+  border-radius: 50%;
+
+  filter: blur(10px);
+
+  pointer-events: none;
+}
+
+.dashboard-header-content {
+  position: relative;
+  z-index: 1;
+}
+
+.dashboard-eyebrow {
+  display: inline-block;
+
+  margin-bottom: var(--app-space-2);
+
+  color: var(--app-primary);
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+}
+
+.dashboard-title {
+  margin: 0;
+
+  color: var(--app-text-primary);
+
+  font-size: clamp(1.65rem, 3vw, 2.2rem);
+  font-weight: 700;
+
+  letter-spacing: -0.03em;
+}
+
+.dashboard-description {
+  margin: var(--app-space-2) 0 0;
+
+  color: var(--app-text-muted);
+
+  font-size: 0.95rem;
+}
+
+/* Daftar peringatan kunjungan terlalu lama */
+.dashboard-warning-list {
+  padding: 6px 0;
+}
+
+.dashboard-warning-item {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  margin: 0 12px 8px;
+  padding: 13px 14px;
+
+  color: inherit;
+  text-decoration: none;
+
+  background: rgba(255, 255, 255, 0.52);
+
+  border: 1px solid var(--app-warning-border);
+  border-radius: 16px;
+
+  transition:
+    transform var(--app-transition),
+    background var(--app-transition),
+    border-color var(--app-transition),
+    box-shadow var(--app-transition);
+}
+
+.dashboard-warning-item:last-child {
+  margin-bottom: 0;
+}
+
+.dashboard-warning-item:hover {
+  color: inherit;
+
+  background: var(--app-glass-bg-strong);
+
+  border-color: rgba(245, 158, 11, 0.3);
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.08);
+}
+
+/* Ikon peringatan */
+.dashboard-warning-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: var(--app-warning);
+
+  background: var(--app-warning-bg);
+
+  border: 1px solid var(--app-warning-border);
+  border-radius: 13px;
+
+  font-size: 17px;
+}
+
+/* Informasi peringatan */
+.dashboard-warning-content {
+  min-width: 0;
+  flex: 1;
+}
+
+.dashboard-warning-top {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: var(--app-space-2);
+}
+
+.dashboard-warning-top strong {
+  overflow: hidden;
+
+  color: var(--app-text-primary);
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dashboard-warning-top span {
+  flex-shrink: 0;
+
+  padding: 3px 7px;
+
+  color: var(--app-warning);
+
+  background: var(--app-warning-bg);
+
+  border: 1px solid var(--app-warning-border);
+  border-radius: 7px;
+
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.dashboard-warning-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 8px 14px;
+
+  margin-top: 5px;
+
+  color: var(--app-text-muted);
+
+  font-size: 10px;
+}
+
+.dashboard-warning-meta span {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 5px;
+}
+
+.dashboard-warning-meta i {
+  color: var(--app-text-muted);
+
+  font-size: 10px;
+}
+
+.dashboard-warning-time {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 4px;
+
+  color: var(--app-warning);
+
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.dashboard-warning-time i {
+  font-size: 10px;
+}
+
+/* Arah pada peringatan */
+.dashboard-warning-arrow {
+  width: 26px;
+  height: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: var(--app-text-muted);
+
+  background: rgba(148, 163, 184, 0.07);
+
+  border-radius: 9px;
+
+  transition:
+    color var(--app-transition),
+    background var(--app-transition),
+    transform var(--app-transition);
+}
+
+.dashboard-warning-item:hover .dashboard-warning-arrow {
+  color: var(--app-warning);
+
+  background: var(--app-warning-bg);
+
+  transform: translateX(2px);
+}
+
+/* Penyesuaian header untuk layar kecil */
+@media (max-width: 767.98px) {
+  .dashboard-header {
+    padding: 22px;
+
+    border-radius: 22px;
+  }
+
+  .dashboard-title {
+    font-size: 1.5rem;
+  }
+
+  .dashboard-description {
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+}
+
+/* Penyesuaian komponen dashboard pada tablet */
+@media (max-width: 991.98px) {
+  .dashboard-stat-card {
+    min-height: 120px;
+  }
+
+  .dashboard-chart-card {
+    min-height: 300px;
+  }
+}
+
+/* Penyesuaian dashboard pada perangkat kecil */
+@media (max-width: 575.98px) {
+  .dashboard-stat-card {
+    min-height: 108px;
+    padding: var(--app-space-4);
+
+    border-radius: var(--app-radius-md);
+  }
+
+  .dashboard-stat-icon,
+  .dashboard-master-icon {
+    width: 43px;
+    height: 43px;
+
+    border-radius: 13px;
+
+    font-size: 18px;
+  }
+
+  .dashboard-stat-content strong,
+  .dashboard-master-card strong {
+    font-size: 22px;
+  }
+
+  .dashboard-card-header {
+    padding: 17px 16px 14px;
+  }
+
+  .dashboard-chart-card,
+  .dashboard-monitor-card {
+    border-radius: var(--app-radius-md);
+  }
+
+  .dashboard-chart-placeholder {
+    min-height: 220px;
+  }
+
+  .dashboard-visit-item {
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin: 0 8px 8px;
+    padding: 12px;
+  }
+
+  .dashboard-visit-main {
+    align-items: flex-start;
+  }
+
+  .dashboard-visit-avatar {
+    width: 38px;
+    height: 38px;
+  }
+
+  .dashboard-visit-top {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 4px;
+  }
+
+  .dashboard-visit-top strong {
+    max-width: 150px;
+  }
+
+  .dashboard-visit-meta {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 4px;
+  }
+
+  .dashboard-visit-side {
+    align-items: flex-end;
+  }
+
+  .dashboard-visit-arrow {
+    display: none;
+  }
+
+  .dashboard-warning-item {
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin: 0 8px 8px;
+    padding: 12px;
+  }
+
+  .dashboard-warning-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .dashboard-warning-top {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 4px;
+  }
+
+  .dashboard-warning-meta {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 4px;
+  }
+
+  .dashboard-warning-arrow {
+    display: none;
+  }
+}
