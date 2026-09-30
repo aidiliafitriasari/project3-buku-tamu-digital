@@ -33,6 +33,9 @@
     <!-- Global Foundation -->
     <link rel="stylesheet" href="<?= base_url('assets/css/app.css') ?>">
 
+    <!-- Shared Components -->
+    <link rel="stylesheet" href="<?= base_url('assets/css/components.css') ?>">
+
     <!-- Auth CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/css/login.css') ?>">
 

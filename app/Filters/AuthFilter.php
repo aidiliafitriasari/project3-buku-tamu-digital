@@ -2,6 +2,7 @@
 
 namespace App\Filters;
 
+use App\Models\UserModel;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -16,9 +17,39 @@ class AuthFilter implements FilterInterface
         if (! session()->get('is_logged_in')) {
             return redirect()->to('/akses-panel');
         }
-    }
 
-    // Tidak ada proses khusus setelah request.
+        $userModel = new UserModel();
+        $user = $userModel
+            ->withDeleted()
+            ->find((int) session()->get('user_id'));
+
+        if (! $user) {
+            session()->destroy();
+
+            return redirect()->to('/akses-panel')
+                ->with('error', 'Akun Anda tidak ditemukan. Silakan login kembali.');
+        }
+
+        if (! empty($user['deleted_at'])) {
+            session()->destroy();
+
+            return redirect()->to('/akses-panel')
+                ->with('error', 'Akun Anda telah dihapus. Silakan hubungi administrator.');
+        }
+
+        if ((int) $user['is_active'] !== 1) {
+            session()->destroy();
+
+            return redirect()->to('/akses-panel')
+                ->with('error', 'Akun Anda telah dinonaktifkan. Silakan hubungi administrator.');
+        }
+
+        if ($user['role'] !== session()->get('role')) {
+            session()->set('role', $user['role']);
+        }
+
+        return null;
+    }
 
     public function after(
         RequestInterface $request,

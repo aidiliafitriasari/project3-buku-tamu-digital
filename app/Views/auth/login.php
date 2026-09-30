@@ -27,8 +27,7 @@
     <?php if (session()->getFlashdata('error')): ?>
 
         <div
-            class="alert alert-danger d-flex align-items-center gap-2 mb-4"
-            role="alert">
+            class="app-alert app-alert-danger mb-4">
 
             <i class="bi bi-exclamation-circle-fill"></i>
 
@@ -44,8 +43,7 @@
     <?php if (session()->getFlashdata('success')): ?>
 
         <div
-            class="alert alert-success d-flex align-items-center gap-2 mb-4"
-            role="alert">
+            class="app-alert app-alert-success mb-4">
 
             <i class="bi bi-check-circle-fill"></i>
 
