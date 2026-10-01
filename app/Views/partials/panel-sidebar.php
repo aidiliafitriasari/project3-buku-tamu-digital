@@ -203,6 +203,13 @@ $isActive = static function (
                 <span>Pengaturan</span>
             </a>
 
+            <a
+                href="<?= base_url('admin/whatsapp-settings') ?>"
+                class="sidebar-link <?= $isActive('admin/whatsapp-settings') ?>">
+                <i class="bi bi-whatsapp"></i>
+                <span>WhatsApp Settings</span>
+            </a>
+
         <?php endif; ?>
 
         <!-- PETUGAS -->

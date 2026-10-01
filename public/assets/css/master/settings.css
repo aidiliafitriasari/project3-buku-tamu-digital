@@ -1,0 +1,67 @@
+.master-color-preview {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.master-color-swatch {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--app-border);
+  border-radius: 6px;
+}
+
+.master-color-input {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.master-color-picker {
+  width: 48px;
+  height: 42px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-sm);
+  cursor: pointer;
+}
+
+.master-input-group {
+  display: flex;
+  align-items: stretch;
+}
+
+.master-input-group .master-form-input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 0;
+}
+
+.master-input-suffix {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+  color: var(--app-text-muted);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--app-border);
+  border-left: 0;
+  border-top-right-radius: var(--app-radius-sm);
+  border-bottom-right-radius: var(--app-radius-sm);
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+@media (max-width: 575.98px) {
+  .master-color-preview-box {
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--app-border);
+    border-radius: var(--app-radius-sm);
+    background: #00309f;
+    flex-shrink: 0;
+  }
+}
