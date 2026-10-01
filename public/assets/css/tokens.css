@@ -9,7 +9,7 @@
   /* Warna aksen dan elemen pendukung */
   --app-gold: #52b788;
   --app-gold-dark: #40916c;
-  --app-gold-soft: rgba(82, 183, 136, 0.12);
+  --app-gold-soft: var(--app-primary-soft);
 
   /* Warna dasar halaman dan material glass */
   --app-bg: #f4f9f6;

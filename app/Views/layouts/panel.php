@@ -1,3 +1,7 @@
+<?php
+helper('color');
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -36,11 +40,17 @@
     <!-- Panel Layout -->
     <link rel="stylesheet" href="<?= base_url('assets/css/panel.css') ?>">
 
+    <!-- Shared Components -->
+    <link rel="stylesheet" href="<?= base_url('assets/css/components.css') ?>">
+
+    <!-- Shared Dynamic Color -->
+    <?= $this->include('partials/dynamic-color') ?>
+
     <?= $this->renderSection('styles') ?>
 
 </head>
 
-<body>
+<body data-base-url="<?= base_url() ?>">
 
     <div id="panel-app">
 
@@ -52,8 +62,6 @@
 
             <main class="panel-content">
 
-                <?= $this->include('partials/flash-message') ?>
-
                 <?= $this->renderSection('content') ?>
 
             </main>
@@ -63,6 +71,8 @@
         </div>
 
     </div>
+
+    <?= $this->include('partials/toast') ?>
 
     <!-- Bootstrap JS -->
     <script

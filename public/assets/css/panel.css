@@ -20,8 +20,8 @@
 
   background: var(--app-glass-bg);
 
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(var(--app-glass-blur-strong));
+  -webkit-backdrop-filter: blur(var(--app-glass-blur-strong));
 
   border: 1px solid var(--app-glass-border);
 
@@ -197,10 +197,10 @@
   text-decoration: none;
 
   transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
+    background var(--app-transition),
+    color var(--app-transition),
+    border-color var(--app-transition),
+    transform var(--app-transition);
 }
 
 .sidebar-link i {
@@ -231,13 +231,13 @@
 
   background: linear-gradient(
     135deg,
-    rgba(45, 106, 79, 0.1),
+    var(--app-primary-soft),
     rgba(45, 106, 79, 0.05)
   );
 
-  border-color: rgba(45, 106, 79, 0.1);
+  border-color: var(--app-border);
 
-  box-shadow: 0 4px 12px rgba(45, 106, 79, 0.05);
+  box-shadow: var(--app-shadow-sm);
 }
 
 .sidebar-link.active i {
@@ -280,8 +280,8 @@
   text-align: left;
 
   transition:
-    background 0.2s ease,
-    border-color 0.2s ease;
+    background var(--app-transition),
+    border-color var(--app-transition);
 }
 
 .sidebar-logout:hover {
@@ -319,8 +319,8 @@
 
   background: var(--app-glass-bg);
 
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(var(--app-glass-blur-strong));
+  -webkit-backdrop-filter: blur(var(--app-glass-blur-strong));
 
   border: 1px solid var(--app-glass-border);
 
@@ -361,7 +361,9 @@
 
   text-decoration: none;
 
-  transition: 0.2s ease;
+  transition:
+    background var(--app-transition),
+    color var(--app-transition);
 }
 
 .navbar-home:hover {
@@ -418,7 +420,7 @@
 
   border: 1px solid var(--app-border);
 
-  border-radius: 999px;
+  border-radius: var(--app-radius-pill);
 
   font-size: 10px;
   font-weight: 600;
@@ -497,7 +499,9 @@
 
   border-radius: 12px;
 
-  transition: 0.2s ease;
+  transition:
+    background var(--app-transition),
+    border-color var(--app-transition);
 }
 
 .navbar-logout:hover {
@@ -508,7 +512,7 @@
 
 /* MOBILE TOOGLE */
 .sidebar-toggle {
-  display: none;
+  display: flex;
 
   width: 40px;
   height: 40px;
@@ -525,6 +529,19 @@
   border: 1px solid var(--app-border);
 
   border-radius: 12px;
+
+  transition:
+    background var(--app-transition),
+    color var(--app-transition),
+    border-color var(--app-transition),
+    transform var(--app-transition);
+  cursor: pointer;
+}
+
+.sidebar-toggle:hover {
+  color: var(--app-primary);
+  background: var(--app-primary-soft);
+  border-color: var(--app-border);
 }
 
 /* CONTENT */
@@ -532,17 +549,6 @@
   flex: 1;
 
   padding: 24px 20px 30px;
-}
-
-/* FLASH MESSAGE */
-.panel-alert {
-  border-radius: 16px;
-
-  border-width: 1px;
-
-  box-shadow: var(--app-shadow-sm);
-
-  font-size: 12px;
 }
 
 /* FOOTER */
@@ -605,7 +611,7 @@
 
     transform: translateX(calc(-100% - 24px));
 
-    transition: transform 0.25s ease;
+    transition: transform var(--app-transition);
 
     z-index: 1100;
   }
@@ -650,6 +656,70 @@
 
   .sidebar-link.active {
     transform: none;
+  }
+}
+
+/* ===== SIDEBAR COLLAPSE — DESKTOP ===== */
+
+/* Default — sidebar expand */
+.panel-sidebar {
+  transition:
+    transform var(--app-transition),
+    width var(--app-transition),
+    padding var(--app-transition);
+}
+
+/* Saat sidebar collapse — desktop */
+@media (min-width: 992px) {
+  .panel-sidebar.is-collapsed {
+    width: 80px; /* ← sidebar mengecil */
+    padding: 20px 10px;
+  }
+
+  /* Sembunyikan teks brand */
+  .panel-sidebar.is-collapsed .sidebar-brand-text {
+    display: none;
+  }
+
+  /* Sembunyikan info user */
+  .panel-sidebar.is-collapsed .sidebar-user-info {
+    display: none;
+  }
+
+  /* Sembunyikan section title */
+  .panel-sidebar.is-collapsed .sidebar-section-title {
+    display: none;
+  }
+
+  /* Sembunyikan teks link */
+  .panel-sidebar.is-collapsed .sidebar-link span {
+    display: none;
+  }
+
+  /* Center link icon */
+  .panel-sidebar.is-collapsed .sidebar-link {
+    justify-content: center;
+    padding: 10px;
+  }
+
+  /* Sembunyikan teks logout */
+  .panel-sidebar.is-collapsed .sidebar-logout span {
+    display: none;
+  }
+
+  /* Center logout */
+  .panel-sidebar.is-collapsed .sidebar-logout {
+    justify-content: center;
+    padding: 10px;
+  }
+
+  /* Main content menyesuaikan */
+  .panel-main {
+    transition: margin-left var(--app-transition);
+  }
+
+  .panel-main.is-sidebar-collapsed {
+    margin-left: calc(80px + 32px); /* ← sesuai sidebar collapse */
   }
 }
 

@@ -36,6 +36,9 @@
     <!-- Shared Components -->
     <link rel="stylesheet" href="<?= base_url('assets/css/components.css') ?>">
 
+    <!-- Shared Dynamic Color -->
+    <?= $this->include('partials/dynamic-color') ?>
+
     <!-- Auth CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/css/login.css') ?>">
 
