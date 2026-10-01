@@ -1,0 +1,6 @@
+.master-table-description {
+  overflow: hidden;
+  max-width: 320px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
