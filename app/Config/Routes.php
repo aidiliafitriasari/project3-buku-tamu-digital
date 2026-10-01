@@ -44,45 +44,54 @@ $routes->group(
         $routes->get('settings', 'Admin\SettingsController::index');
         $routes->post('settings/update', 'Admin\SettingsController::update');
 
+        // WhatsApp Settings
+        $routes->get('whatsapp-settings', 'Admin\WhatsappSettingController::index');
+        $routes->post('whatsapp-settings/update', 'Admin\WhatsappSettingController::update');
+
         // Pengguna
+        $routes->get('users/partial', 'Admin\UserController::partial');
         $routes->get('users', 'Admin\UserController::index');
-        $routes->get('users/create', 'Admin\UserController::create');
         $routes->post('users', 'Admin\UserController::store');
-        $routes->get('users/edit/(:num)', 'Admin\UserController::edit/$1');
         $routes->post('users/update/(:num)', 'Admin\UserController::update/$1');
+        $routes->post('users/reset-password/(:num)', 'Admin\UserController::resetPassword/$1');
         $routes->post('users/delete/(:num)', 'Admin\UserController::delete/$1');
+        $routes->post('users/restore/(:num)', 'Admin\UserController::restore/$1');
+        $routes->post('users/toggle-status/(:num)', 'Admin\UserController::toggleStatus/$1');
 
         // Pegawai
+        $routes->get('employees/partial', 'Admin\EmployeeController::partial');
         $routes->get('employees', 'Admin\EmployeeController::index');
-        $routes->get('employees/create', 'Admin\EmployeeController::create');
         $routes->post('employees', 'Admin\EmployeeController::store');
-        $routes->get('employees/edit/(:num)', 'Admin\EmployeeController::edit/$1');
         $routes->post('employees/update/(:num)', 'Admin\EmployeeController::update/$1');
         $routes->post('employees/delete/(:num)', 'Admin\EmployeeController::delete/$1');
+        $routes->post('employees/restore/(:num)', 'Admin\EmployeeController::restore/$1');
+        $routes->post('employees/toggle-status/(:num)', 'Admin\EmployeeController::toggleStatus/$1');
 
         // Departemen
+        $routes->get('departments/partial', 'Admin\DepartmentController::partial');
         $routes->get('departments', 'Admin\DepartmentController::index');
-        $routes->get('departments/create', 'Admin\DepartmentController::create');
         $routes->post('departments', 'Admin\DepartmentController::store');
-        $routes->get('departments/edit/(:num)', 'Admin\DepartmentController::edit/$1');
         $routes->post('departments/update/(:num)', 'Admin\DepartmentController::update/$1');
         $routes->post('departments/delete/(:num)', 'Admin\DepartmentController::delete/$1');
+        $routes->post('departments/restore/(:num)', 'Admin\DepartmentController::restore/$1');
+        $routes->post('departments/toggle-status/(:num)', 'Admin\DepartmentController::toggleStatus/$1');
 
         // Keperluan Kunjungan
+        $routes->get('visit-purposes/partial', 'Admin\VisitPurposeController::partial');
         $routes->get('visit-purposes', 'Admin\VisitPurposeController::index');
-        $routes->get('visit-purposes/create', 'Admin\VisitPurposeController::create');
         $routes->post('visit-purposes', 'Admin\VisitPurposeController::store');
-        $routes->get('visit-purposes/edit/(:num)', 'Admin\VisitPurposeController::edit/$1');
         $routes->post('visit-purposes/update/(:num)', 'Admin\VisitPurposeController::update/$1');
         $routes->post('visit-purposes/delete/(:num)', 'Admin\VisitPurposeController::delete/$1');
+        $routes->post('visit-purposes/restore/(:num)', 'Admin\VisitPurposeController::restore/$1');
+        $routes->post('visit-purposes/toggle-status/(:num)', 'Admin\VisitPurposeController::toggleStatus/$1');
 
         // Kunjungan
         $routes->get('visits', 'Admin\VisitController::index');
         $routes->get('visits/(:num)', 'Admin\VisitController::show/$1');
 
         // Activity Log
+        $routes->get('activity-logs/partial', 'Admin\ActivityLogController::partial');
         $routes->get('activity-logs', 'Admin\ActivityLogController::index');
-        $routes->get('activity-logs/(:num)', 'Admin\ActivityLogController::show/$1');
 
         // Laporan
         $routes->get('reports', 'Admin\ReportController::index');

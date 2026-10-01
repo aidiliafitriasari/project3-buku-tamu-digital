@@ -1,0 +1,1 @@
+<?= esc($user['role'] === 'administrator' ? 'Administrator' : 'Petugas') ?>

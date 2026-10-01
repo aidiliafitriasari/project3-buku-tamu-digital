@@ -18,6 +18,7 @@ class ActivityLogModel extends Model
         'activity',
         'module',
         'description',
+        'created_at',
     ];
 
     protected $useTimestamps = false;
