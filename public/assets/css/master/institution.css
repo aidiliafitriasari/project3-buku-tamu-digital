@@ -1,0 +1,20 @@
+.master-detail-logo {
+  display: block;
+  max-width: 120px;
+  max-height: 120px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-sm);
+  padding: 8px;
+}
+
+.master-logo-preview {
+  margin-bottom: 12px;
+}
+
+.master-detail-logo.is-hidden {
+  display: none;
+}
