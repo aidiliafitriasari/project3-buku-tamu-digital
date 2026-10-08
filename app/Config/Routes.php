@@ -103,6 +103,7 @@ $routes->group(
         $routes->get('activity-logs', 'Admin\ActivityLogController::index');
 
         // Laporan
+        $routes->get('reports/partial', 'Admin\ReportController::partial');
         $routes->get('reports', 'Admin\ReportController::index');
         $routes->get('reports/export', 'Admin\ReportController::export');
         $routes->get('reports/print', 'Admin\ReportController::print');

@@ -1,0 +1,270 @@
+@page {
+  margin: 12mm 10mm;
+  size: A4 landscape;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  font-family: "DejaVu Sans", Arial, sans-serif;
+  font-size: 9px;
+  color: #111;
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+}
+
+/* HEADER INSTANSI */
+table.pdf-header-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-bottom: 3px double #111;
+  margin-bottom: 10px;
+}
+
+table.pdf-header-table td {
+  padding: 8px 6px;
+  vertical-align: middle;
+}
+
+td.pdf-logo-cell {
+  width: 80px;
+  text-align: center;
+}
+
+td.pdf-logo-cell img {
+  width: 65px;
+  height: 65px;
+}
+
+td.pdf-header-info h1 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 3px;
+  letter-spacing: 0.3px;
+}
+
+td.pdf-header-info p {
+  font-size: 9px;
+  color: #444;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* JUDUL */
+.pdf-title {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 6px 0;
+  border-top: 1px solid #111;
+  border-bottom: 1px solid #111;
+  margin-bottom: 4px;
+}
+
+.pdf-period {
+  text-align: center;
+  font-size: 9px;
+  color: #444;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+/* SECTION TITLE */
+.pdf-section-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 10px 0 5px;
+  padding: 3px 0;
+  border-bottom: 1px solid #111;
+}
+
+/* FILTER TABLE */
+table.pdf-filter-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+table.pdf-filter-table td {
+  border: 1px solid #d1d5db;
+  padding: 4px 8px;
+  font-size: 9px;
+}
+
+table.pdf-filter-table td:first-child {
+  background: #f3f4f6;
+  width: 130px;
+  font-weight: 600;
+}
+
+/* SUMMARY TABLE */
+table.pdf-summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+}
+
+table.pdf-summary-table td {
+  border: 1px solid #d1d5db;
+  padding: 4px 8px;
+  font-size: 9px;
+}
+
+table.pdf-summary-table td:first-child {
+  background: #f3f4f6;
+  width: 70%;
+}
+
+table.pdf-summary-table td:last-child {
+  text-align: right;
+  font-weight: 700;
+  font-size: 10px;
+}
+
+/* DATA TABLE */
+table.pdf-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 7.5px;
+  margin-top: 6px;
+}
+
+table.pdf-data-table thead {
+  display: table-header-group;
+}
+
+table.pdf-data-table th {
+  background: #1f2937;
+  color: #ffffff;
+  border: 1px solid #111;
+  padding: 4px 3px;
+  text-align: left;
+  font-size: 7.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+}
+
+table.pdf-data-table td {
+  border: 1px solid #d1d5db;
+  padding: 3px 3px;
+  vertical-align: top;
+}
+
+table.pdf-data-table tbody tr:nth-child(even) td {
+  background: #f9fafb;
+}
+
+/* Column widths */
+table.pdf-data-table .col-no {
+  width: 3%;
+  text-align: center;
+}
+table.pdf-data-table .col-kode {
+  width: 10%;
+}
+table.pdf-data-table .col-nama {
+  width: 10%;
+}
+table.pdf-data-table .col-asal {
+  width: 9%;
+}
+table.pdf-data-table .col-dept {
+  width: 9%;
+}
+table.pdf-data-table .col-pegawai {
+  width: 10%;
+}
+table.pdf-data-table .col-keperluan {
+  width: 9%;
+}
+table.pdf-data-table .col-datang {
+  width: 9%;
+}
+table.pdf-data-table .col-checkin {
+  width: 8%;
+}
+table.pdf-data-table .col-checkout {
+  width: 8%;
+}
+table.pdf-data-table .col-durasi {
+  width: 5%;
+  text-align: center;
+}
+table.pdf-data-table .col-status {
+  width: 10%;
+}
+
+/* STATUS BADGE */
+.pdf-status {
+  display: inline-block;
+  padding: 1px 4px;
+  font-size: 7px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pdf-status-menunggu {
+  background: #fef3c7;
+  color: #92400e;
+}
+.pdf-status-masih_berkunjung {
+  background: #dbeafe;
+  color: #1e40af;
+}
+.pdf-status-selesai {
+  background: #d1fae5;
+  color: #065f46;
+}
+.pdf-status-ditolak {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.pdf-status-dibatalkan {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+/* SIGNATURE */
+table.pdf-signature {
+  width: 100%;
+  margin-top: 25px;
+  border-collapse: collapse;
+}
+
+table.pdf-signature td {
+  text-align: center;
+  width: 50%;
+  padding: 0 20px;
+  vertical-align: top;
+  font-size: 9px;
+}
+
+.pdf-signature-label {
+  margin-bottom: 55px;
+}
+
+.pdf-signature-line {
+  border-top: 1px solid #111;
+  padding-top: 3px;
+  font-weight: 600;
+}
+
+/* EMPTY STATE */
+.pdf-empty {
+  text-align: center;
+  padding: 30px;
+  color: #6b7280;
+  font-style: italic;
+  border: 1px dashed #d1d5db;
+  margin: 20px 0;
+}
