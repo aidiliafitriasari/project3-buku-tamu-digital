@@ -5,23 +5,20 @@ use CodeIgniter\Router\RouteCollection;
 /** @var RouteCollection $routes */
 
 // PUBLIK ROUTE
-$routes->get('/', 'Home::index');
+$routes->get('/', 'GuestController::index');
+$routes->get('pendaftaran', 'GuestController::register');
+$routes->post('pendaftaran', 'GuestController::store');
+$routes->get('pendaftaran/sukses/(:segment)', 'GuestController::success/$1');
 
 // Authentication
 $routes->get('akses-panel', 'AuthController::login');
 $routes->post('akses-panel', 'AuthController::attemptLogin');
 $routes->post('logout', 'AuthController::logout');
 
-// Guest
-$routes->get('pendaftaran', 'GuestController::index');
-$routes->get('pendaftaran/sukses', 'GuestController::success');
-
 // Kiosk
 $routes->get('kiosk', 'KioskController::index');
-
-// Checkout melalui QR
-$routes->get('checkout/(:segment)', 'CheckoutController::index/$1');
-$routes->post('checkout/(:segment)', 'CheckoutController::process/$1');
+$routes->get('kiosk/register', 'KioskController::register');
+$routes->get('kiosk/success/(:segment)', 'KioskController::success/$1');
 
 // ADMINISTRATOR ROUTE
 $routes->group(
@@ -86,8 +83,19 @@ $routes->group(
         $routes->post('visit-purposes/toggle-status/(:num)', 'Admin\VisitPurposeController::toggleStatus/$1');
 
         // Kunjungan
+        $routes->get('visits/partial', 'Admin\VisitController::partial');
         $routes->get('visits', 'Admin\VisitController::index');
+        $routes->get('visits/(:num)/data', 'Admin\VisitController::getData/$1');
+        $routes->get('visits/(:num)/edit', 'Admin\VisitController::edit/$1');
         $routes->get('visits/(:num)', 'Admin\VisitController::show/$1');
+        $routes->post('visits/update/(:num)', 'Admin\VisitController::update/$1');
+        $routes->post('visits/delete/(:num)', 'Admin\VisitController::delete/$1');
+        $routes->post('visits/restore/(:num)', 'Admin\VisitController::restore/$1');
+
+        $routes->post('visits/(:num)/check-in', 'Admin\VisitController::checkIn/$1');
+        $routes->post('visits/(:num)/reject', 'Admin\VisitController::reject/$1');
+        $routes->post('visits/(:num)/cancel', 'Admin\VisitController::cancel/$1');
+        $routes->post('visits/(:num)/checkout', 'Admin\VisitController::checkout/$1');
 
         // Activity Log
         $routes->get('activity-logs/partial', 'Admin\ActivityLogController::partial');
@@ -114,21 +122,22 @@ $routes->group(
         $routes->get('dashboard', 'Petugas\DashboardController::index');
 
         // Kunjungan
+        $routes->get('visits/partial', 'Petugas\VisitController::partial');
         $routes->get('visits', 'Petugas\VisitController::index');
-        $routes->get('visits/(:num)', 'Petugas\VisitController::show/$1');
+        $routes->get('visits/(:num)/data', 'Petugas\VisitController::getData/$1');
         $routes->get('visits/(:num)/edit', 'Petugas\VisitController::edit/$1');
-        $routes->post('visits/(:num)/update', 'Petugas\VisitController::update/$1');
+        $routes->get('visits/(:num)', 'Petugas\VisitController::show/$1');
+        $routes->post('visits/update/(:num)', 'Petugas\VisitController::update/$1');
 
-        // Check-in
-        $routes->post(
-            'visits/(:num)/check-in',
-            'Petugas\VisitController::checkIn/$1'
-        );
+        // Aksi
+        $routes->post('visits/(:num)/check-in', 'Petugas\VisitController::checkIn/$1');
+        $routes->post('visits/(:num)/reject', 'Petugas\VisitController::reject/$1');
+        $routes->post('visits/(:num)/cancel', 'Petugas\VisitController::cancel/$1');
+        $routes->post('visits/(:num)/checkout', 'Petugas\VisitController::checkout/$1');
 
-        // Checkout
-        $routes->post(
-            'visits/(:num)/checkout',
-            'Petugas\VisitController::checkout/$1'
-        );
+        // Checkout via QR
+        $routes->get('checkout', 'Petugas\CheckoutController::scan');
+        $routes->get('checkout/(:segment)', 'Petugas\CheckoutController::index/$1');
+        $routes->post('checkout/(:segment)', 'Petugas\CheckoutController::process/$1');
     }
 );
