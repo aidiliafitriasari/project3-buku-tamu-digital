@@ -307,130 +307,102 @@
 
             </div>
 
-            <div class="p-3">
+            <?php if (! empty($waitingVisitList)): ?>
 
-                <?php if (! empty($waitingVisitList)): ?>
+                <div class="dashboard-visit-list">
 
-                    <div class="table-responsive">
+                    <?php foreach ($waitingVisitList as $visit): ?>
 
-                        <table class="table align-middle mb-0">
+                        <a
+                            href="<?= site_url('petugas/visits/' . $visit['id']) ?>"
 
-                            <thead>
+                            class="dashboard-visit-item">
 
-                                <tr>
+                            <div class="dashboard-visit-main">
 
-                                    <th>
-                                        Tamu
-                                    </th>
+                                <div class="dashboard-visit-avatar">
+                                    <i class="bi bi-person"></i>
+                                </div>
 
-                                    <th>
-                                        Tujuan
-                                    </th>
+                                <div class="dashboard-visit-info">
 
-                                    <th>
-                                        Keperluan
-                                    </th>
+                                    <div class="dashboard-visit-top">
+                                        <strong><?= esc($visit['guest_name'] ?? '-') ?></strong>
 
-                                    <th>
-                                        Waktu
-                                    </th>
+                                        <span class="dashboard-visit-code"><?= esc($visit['visit_code'] ?? '-') ?></span>
+                                    </div>
 
-                                    <th class="text-end">
-                                        Aksi
-                                    </th>
+                                    <div class="dashboard-visit-meta">
+                                        <span>
+                                            <i class="bi bi-diagram-3"></i>
+                                            <?= esc($visit['department_name'] ?? '-') ?>
+                                        </span>
+                                        <span>
+                                            <i class="bi bi-person-badge"></i>
+                                            <?= esc($visit['employee_name'] ?? '-') ?>
+                                        </span>
+                                    </div>
 
-                                </tr>
+                                    <div class="dashboard-visit-purpose">
+                                        <i class="bi bi-card-checklist"></i>
+                                        <?= esc($visit['purpose_name'] ?? '-') ?>
+                                    </div>
 
-                            </thead>
+                                </div>
 
-                            <tbody>
+                            </div>
 
-                                <?php foreach ($waitingVisitList as $visit): ?>
+                            <div class="dashboard-visit-side">
 
-                                    <tr>
+                                <span class="dashboard-status-badge status-<?= esc($visit['status'] ?? 'menunggu') ?>">
+                                    <?= esc(ucwords(str_replace('_', ' ', $visit['status'] ?? 'menunggu'))) ?>
+                                </span>
 
-                                        <td>
+                                <span class="dashboard-visit-time">
+                                    <i class="bi bi-clock"></i>
 
-                                            <div class="fw-semibold">
-                                                <?= esc($visit['guest_name'] ?? '-') ?>
-                                            </div>
+                                    <?= ! empty($visit['arrival_at'])
+                                        ? esc(
+                                            date(
+                                                'd/m/Y H:i',
+                                                strtotime($visit['arrival_at'])
+                                            )
+                                        )
+                                        : '-' ?>
 
-                                            <div class="small text-muted">
-                                                <?= esc($visit['visit_code'] ?? '-') ?>
-                                            </div>
+                                </span>
 
-                                        </td>
+                            </div>
 
-                                        <td>
+                            <div class="dashboard-visit-arrow">
+                                <i class="bi bi-chevron-right"></i>
+                            </div>
 
-                                            <div>
-                                                <?= esc($visit['department_name'] ?? '-') ?>
-                                            </div>
+                        </a>
 
-                                            <div class="small text-muted">
-                                                <?= esc($visit['employee_name'] ?? '-') ?>
-                                            </div>
+                    <?php endforeach; ?>
 
-                                        </td>
+                </div>
 
-                                        <td>
-                                            <?= esc($visit['purpose_name'] ?? '-') ?>
-                                        </td>
+            <?php else: ?>
 
-                                        <td>
+                <div class="dashboard-empty-state">
 
-                                            <?= ! empty($visit['arrival_at'])
-                                                ? esc(
-                                                    date(
-                                                        'd/m/Y H:i',
-                                                        strtotime($visit['arrival_at'])
-                                                    )
-                                                )
-                                                : '-' ?>
-
-                                        </td>
-
-                                        <td class="text-end">
-
-                                            <a
-                                                href="<?= site_url('petugas/visits/' . $visit['id']) ?>"
-                                                class="btn btn-sm btn-outline-primary">
-                                                Detail
-                                            </a>
-
-                                        </td>
-
-                                    </tr>
-
-                                <?php endforeach; ?>
-
-                            </tbody>
-
-                        </table>
-
+                    <div class="dashboard-empty-icon">
+                        <i class="bi bi-hourglass-split"></i>
                     </div>
 
-                <?php else: ?>
+                    <h6>
+                        Tidak ada kunjungan menunggu
+                    </h6>
 
-                    <div class="dashboard-empty-state">
+                    <p>
+                        Belum ada kunjungan yang menunggu proses verifikasi.
+                    </p>
 
-                        <div class="dashboard-empty-icon">
-                            <i class="bi bi-hourglass-split"></i>
-                        </div>
+                </div>
 
-                        <h6>
-                            Tidak ada kunjungan menunggu
-                        </h6>
-
-                        <p>
-                            Belum ada kunjungan yang menunggu proses verifikasi.
-                        </p>
-
-                    </div>
-
-                <?php endif; ?>
-
-            </div>
+            <?php endif; ?>
 
         </div>
 
@@ -465,130 +437,102 @@
 
             </div>
 
-            <div class="p-3">
+            <?php if (! empty($currentVisitList)): ?>
 
-                <?php if (! empty($currentVisitList)): ?>
+                <div class="dashboard-visit-list">
 
-                    <div class="table-responsive">
+                    <?php foreach ($currentVisitList as $visit): ?>
 
-                        <table class="table align-middle mb-0">
+                        <a
+                            href="<?= site_url('petugas/visits/' . $visit['id']) ?>"
+                            class="dashboard-visit-item">
 
-                            <thead>
+                            <div class="dashboard-visit-main">
 
-                                <tr>
+                                <div class="dashboard-visit-avatar">
+                                    <i class="bi bi-person-walking"></i>
+                                </div>
 
-                                    <th>
-                                        Tamu
-                                    </th>
+                                <div class="dashboard-visit-info">
+                                    <div class="dashboard-visit-top">
+                                        <strong><?= esc($visit['guest_name'] ?? '-') ?></strong>
 
-                                    <th>
-                                        Tujuan
-                                    </th>
+                                        <span class="dashboard-visit-code"><?= esc($visit['visit_code'] ?? '-') ?></span>
+                                    </div>
 
-                                    <th>
-                                        Keperluan
-                                    </th>
+                                    <div class="dashboard-visit-meta">
 
-                                    <th>
-                                        Check-in
-                                    </th>
+                                        <span>
+                                            <i class="bi bi-diagram-3"></i>
+                                            <?= esc($visit['department_name'] ?? '-') ?>
+                                        </span>
 
-                                    <th class="text-end">
-                                        Aksi
-                                    </th>
+                                        <span>
+                                            <i class="bi bi-person-badge"></i>
+                                            <?= esc($visit['employee_name'] ?? '-') ?>
+                                        </span>
 
-                                </tr>
+                                    </div>
 
-                            </thead>
+                                    <div class="dashboard-visit-purpose">
+                                        <i class="bi bi-card-checklist"></i>
+                                        <?= esc($visit['purpose_name'] ?? '-') ?>
+                                    </div>
 
-                            <tbody>
+                                </div>
 
-                                <?php foreach ($currentVisitList as $visit): ?>
+                            </div>
 
-                                    <tr>
+                            <div class="dashboard-visit-side">
 
-                                        <td>
+                                <span class="dashboard-status-badge status-<?= esc($visit['status'] ?? 'masih_berkunjung') ?>">
+                                    <?= esc(ucwords(str_replace('_', ' ', $visit['status'] ?? 'masih_berkunjung'))) ?>
+                                </span>
 
-                                            <div class="fw-semibold">
-                                                <?= esc($visit['guest_name'] ?? '-') ?>
-                                            </div>
+                                <span class="dashboard-visit-time">
+                                    <i class="bi bi-clock"></i>
+                                    <?= ! empty($visit['checkin_at'])
+                                        ? esc(
+                                            date(
+                                                'd/m/Y H:i',
+                                                strtotime($visit['checkin_at'])
+                                            )
+                                        )
+                                        : '-' ?>
 
-                                            <div class="small text-muted">
-                                                <?= esc($visit['visit_code'] ?? '-') ?>
-                                            </div>
+                                </span>
 
-                                        </td>
+                            </div>
 
-                                        <td>
+                            <div class="dashboard-visit-arrow">
+                                <i class="bi bi-chevron-right"></i>
+                            </div>
 
-                                            <div>
-                                                <?= esc($visit['department_name'] ?? '-') ?>
-                                            </div>
+                        </a>
 
-                                            <div class="small text-muted">
-                                                <?= esc($visit['employee_name'] ?? '-') ?>
-                                            </div>
+                    <?php endforeach; ?>
 
-                                        </td>
+                </div>
 
-                                        <td>
-                                            <?= esc($visit['purpose_name'] ?? '-') ?>
-                                        </td>
+            <?php else: ?>
 
-                                        <td>
+                <div class="dashboard-empty-state">
 
-                                            <?= ! empty($visit['checkin_at'])
-                                                ? esc(
-                                                    date(
-                                                        'd/m/Y H:i',
-                                                        strtotime($visit['checkin_at'])
-                                                    )
-                                                )
-                                                : '-' ?>
-
-                                        </td>
-
-                                        <td class="text-end">
-
-                                            <a
-                                                href="<?= site_url('petugas/visits/' . $visit['id']) ?>"
-                                                class="btn btn-sm btn-outline-primary">
-                                                Detail
-                                            </a>
-
-                                        </td>
-
-                                    </tr>
-
-                                <?php endforeach; ?>
-
-                            </tbody>
-
-                        </table>
-
+                    <div class="dashboard-empty-icon">
+                        <i class="bi bi-person-walking"></i>
                     </div>
 
-                <?php else: ?>
+                    <h6>
+                        Tidak ada tamu berkunjung
+                    </h6>
 
-                    <div class="dashboard-empty-state">
+                    <p>
+                        Saat ini tidak ada tamu yang sedang berkunjung.
+                    </p>
 
-                        <div class="dashboard-empty-icon">
-                            <i class="bi bi-person-walking"></i>
-                        </div>
+                </div>
 
-                        <h6>
-                            Tidak ada tamu berkunjung
-                        </h6>
-
-                        <p>
-                            Saat ini tidak ada tamu yang sedang berkunjung.
-                        </p>
-
-                    </div>
-
-                <?php endif; ?>
-
-            </div>
+            <?php endif; ?>
 
         </div>
 
@@ -608,7 +552,10 @@
                     </h6>
 
                     <span>
-                        Kunjungan yang melebihi batas waktu.
+                        Kunjungan yang melebihi batas waktu
+                        <?php if (! empty($visitWarning)): ?>
+                            <strong>(Batas: <?= esc($visitWarning) ?> menit)</strong>
+                            <?php endif; ?>.
                     </span>
 
                 </div>
@@ -623,136 +570,89 @@
 
             </div>
 
-            <div class="p-3">
+            <?php if (! empty($longVisits)): ?>
 
-                <?php if (! empty($longVisits)): ?>
+                <div class="dashboard-warning-list">
 
-                    <div class="table-responsive">
+                    <?php foreach ($longVisits as $visit): ?>
 
-                        <table class="table align-middle mb-0">
+                        <a
+                            href="<?= site_url('petugas/visits/' . $visit['id']) ?>"
+                            class="dashboard-warning-item">
 
-                            <thead>
+                            <div class="dashboard-warning-icon">
+                                <i class="bi bi-exclamation-triangle"></i>
+                            </div>
 
-                                <tr>
+                            <div class="dashboard-warning-content">
 
-                                    <th>
-                                        Tamu
-                                    </th>
+                                <div class="dashboard-warning-top">
+                                    <strong><?= esc($visit['guest_name'] ?? '-') ?></strong>
+                                    <span><?= esc($visit['visit_code'] ?? '-') ?></span>
+                                </div>
 
-                                    <th>
-                                        Tujuan
-                                    </th>
+                                <div class="dashboard-warning-meta">
 
-                                    <th>
-                                        Check-in
-                                    </th>
+                                    <span>
+                                        <i class="bi bi-diagram-3"></i>
+                                        <?= esc($visit['department_name'] ?? '-') ?>
+                                    </span>
 
-                                    <th>
-                                        Durasi
-                                    </th>
+                                    <span>
+                                        <i class="bi bi-person-badge"></i>
+                                        <?= esc($visit['employee_name'] ?? '-') ?>
+                                    </span>
 
-                                    <th class="text-end">
-                                        Aksi
-                                    </th>
+                                </div>
 
-                                </tr>
+                                <div class="dashboard-warning-time">
+                                    <i class="bi bi-clock-history"></i>
+                                    Check-in
+                                    <?= ! empty($visit['checkin_at'])
+                                        ? esc(
+                                            date(
+                                                'd/m/Y H:i',
+                                                strtotime($visit['checkin_at'])
+                                            )
+                                        )
+                                        : '-' ?>
 
-                            </thead>
+                                </div>
 
-                            <tbody>
+                                <?php if (! empty($visit['duration_minutes'])): ?>
+                                    <div class="dashboard-warning-time">
+                                        <i class="bi bi-hourglass-split"></i>
+                                        Durasi: <strong><?= esc($visit['duration_minutes']) ?> menit</strong>
+                                    </div>
+                                <?php endif; ?>
 
-                                <?php foreach ($longVisits as $visit): ?>
+                            </div>
 
-                                    <tr>
+                        </a>
 
-                                        <td>
+                    <?php endforeach; ?>
 
-                                            <div class="fw-semibold">
-                                                <?= esc($visit['guest_name'] ?? '-') ?>
-                                            </div>
+                </div>
 
-                                            <div class="small text-muted">
-                                                <?= esc($visit['visit_code'] ?? '-') ?>
-                                            </div>
+            <?php else: ?>
 
-                                        </td>
+                <div class="dashboard-empty-state">
 
-                                        <td>
-
-                                            <div>
-                                                <?= esc($visit['department_name'] ?? '-') ?>
-                                            </div>
-
-                                            <div class="small text-muted">
-                                                <?= esc($visit['employee_name'] ?? '-') ?>
-                                            </div>
-
-                                        </td>
-
-                                        <td>
-
-                                            <?= ! empty($visit['checkin_at'])
-                                                ? esc(
-                                                    date(
-                                                        'd/m/Y H:i',
-                                                        strtotime($visit['checkin_at'])
-                                                    )
-                                                )
-                                                : '-' ?>
-
-                                        </td>
-
-                                        <td>
-
-                                            <span class="fw-semibold">
-                                                <?= esc($visit['duration_minutes'] ?? 0) ?>
-                                            </span>
-
-                                            menit
-
-                                        </td>
-
-                                        <td class="text-end">
-
-                                            <a
-                                                href="<?= site_url('petugas/visits/' . $visit['id']) ?>"
-                                                class="btn btn-sm btn-outline-primary">
-                                                Detail
-                                            </a>
-
-                                        </td>
-
-                                    </tr>
-
-                                <?php endforeach; ?>
-
-                            </tbody>
-
-                        </table>
-
+                    <div class="dashboard-empty-icon">
+                        <i class="bi bi-check2-circle"></i>
                     </div>
 
-                <?php else: ?>
+                    <h6>
+                        Tidak ada peringatan
+                    </h6>
 
-                    <div class="dashboard-empty-state">
+                    <p>
+                        Tidak ada kunjungan yang melebihi batas waktu.
+                    </p>
 
-                        <div class="dashboard-empty-icon">
-                            <i class="bi bi-check2-circle"></i>
-                        </div>
+                </div>
 
-                        <h6>
-                            Tidak ada peringatan
-                        </h6>
-
-                        <p>
-                            Tidak ada kunjungan yang melebihi batas waktu.
-                        </p>
-
-                    </div>
-
-                <?php endif; ?>
-
-            </div>
+            <?php endif; ?>
 
         </div>
 

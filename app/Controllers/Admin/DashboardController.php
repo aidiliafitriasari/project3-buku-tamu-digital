@@ -36,6 +36,9 @@ class DashboardController extends BaseController
             // Monitoring
             'latestVisits' => $this->dashboardService->getLatestVisits(),
             'longVisits'   => $this->dashboardService->getLongVisits(),
+
+            // Peringatan
+            'visitWarning' => $this->dashboardService->getVisitWarning(),
         ];
 
         return view('admin/dashboard', $data);

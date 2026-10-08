@@ -376,14 +376,17 @@ class DashboardService
                 'visits.id',
                 'visits.visit_code',
                 'visits.checkin_at',
+                'visits.arrival_at',
                 'visits.status',
                 'guests.name AS guest_name',
                 'departments.name AS department_name',
                 'employees.name AS employee_name',
+                'visit_purposes.name AS purpose_name',
             ])
             ->join('guests', 'guests.id = visits.guest_id')
             ->join('departments', 'departments.id = visits.department_id')
             ->join('employees', 'employees.id = visits.employee_id')
+            ->join('visit_purposes', 'visit_purposes.id = visits.visit_purpose_id')
             ->where('visits.status', 'masih_berkunjung')
             ->where('visits.checkin_at IS NOT NULL', null, false)
             ->where('visits.checkin_at <', $cutoffTime->format('Y-m-d H:i:s'))
@@ -410,5 +413,16 @@ class DashboardService
         unset($visit);
 
         return $visits;
+    }
+
+    public function getVisitWarning(): int
+    {
+        $setting = $this->settingModel->first();
+
+        if (! $setting || empty($setting['visit_warning'])) {
+            return 0;
+        }
+
+        return (int) $setting['visit_warning'];
     }
 }

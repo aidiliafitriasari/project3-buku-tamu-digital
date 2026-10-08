@@ -676,7 +676,10 @@
                             </h6>
 
                             <span>
-                                Kunjungan yang melebihi batas waktu.
+                                Kunjungan yang melebihi batas waktu
+                                <?php if (! empty($visitWarning)): ?>
+                                    <strong>(Batas: <?= esc($visitWarning) ?> menit)</strong>
+                                    <?php endif; ?>.
                             </span>
 
                         </div>
@@ -747,6 +750,13 @@
                                             ) ?>
 
                                         </div>
+
+                                        <?php if (! empty($visit['duration_minutes'])): ?>
+                                            <div class="dashboard-warning-time">
+                                                <i class="bi bi-hourglass-split"></i>
+                                                Durasi: <strong><?= esc($visit['duration_minutes']) ?> menit</strong>
+                                            </div>
+                                        <?php endif; ?>
 
                                     </div>
 

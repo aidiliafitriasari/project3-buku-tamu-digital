@@ -35,6 +35,9 @@ class DashboardController extends BaseController
             'waitingVisitList' => $this->dashboardService->getWaitingVisits(),
             'currentVisitList' => $this->dashboardService->getCurrentVisits(),
             'longVisits'       => $this->dashboardService->getLongVisits(),
+
+            // Peringatan
+            'visitWarning' => $this->dashboardService->getVisitWarning(),
         ];
 
         return view('petugas/dashboard', $data);

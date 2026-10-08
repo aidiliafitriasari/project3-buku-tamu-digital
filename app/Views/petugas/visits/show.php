@@ -19,6 +19,13 @@ $allowedMenu = ['aktif', 'riwayat'];
 if (! in_array($menuParam, $allowedMenu, true)) {
     $menuParam = 'aktif';
 }
+
+$referrer = $_SERVER['HTTP_REFERER'] ?? '';
+$isFromSameSite = ! empty($referrer) && str_starts_with($referrer, base_url());
+
+$backUrl = $isFromSameSite
+    ? $referrer
+    : base_url(($isAdmin ?? false) ? 'admin/visits' : 'petugas/visits') . '?status=' . urlencode($fromFilter) . '&menu=' . urlencode($menuParam);
 ?>
 
 <div class="master-page">
@@ -53,7 +60,7 @@ if (! in_array($menuParam, $allowedMenu, true)) {
             <?php endif; ?>
 
             <a
-                href="<?= base_url(($isAdmin ?? false) ? 'admin/visits' : 'petugas/visits') . '?status=' . urlencode($fromFilter) . '&menu=' . urlencode($menuParam) ?>"
+                href="<?= esc($backUrl) ?>"
                 class="app-btn app-btn-ghost">
                 <i class="bi bi-arrow-left"></i>
                 Kembali
