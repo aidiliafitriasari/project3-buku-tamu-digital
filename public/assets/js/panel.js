@@ -50,3 +50,28 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const menuBtn = document.getElementById('bottomNavMenuBtn');
+
+    if (!menuBtn) {
+        return;
+    }
+
+    menuBtn.addEventListener('click', function () {
+        const sidebar = document.querySelector('.panel-sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+
+        if (!sidebar) {
+            return;
+        }
+
+        sidebar.classList.toggle('is-open');
+
+        if (overlay) {
+            overlay.classList.toggle('is-visible');
+        }
+    });
+
+});

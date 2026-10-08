@@ -659,9 +659,7 @@
   }
 }
 
-/* ===== SIDEBAR COLLAPSE — DESKTOP ===== */
-
-/* Default — sidebar expand */
+/* SIDEBAR COLLAPSE — DESKTOP */
 .panel-sidebar {
   transition:
     transform var(--app-transition),
@@ -669,57 +667,48 @@
     padding var(--app-transition);
 }
 
-/* Saat sidebar collapse — desktop */
 @media (min-width: 992px) {
   .panel-sidebar.is-collapsed {
-    width: 80px; /* ← sidebar mengecil */
+    width: 80px;
     padding: 20px 10px;
   }
 
-  /* Sembunyikan teks brand */
   .panel-sidebar.is-collapsed .sidebar-brand-text {
     display: none;
   }
 
-  /* Sembunyikan info user */
   .panel-sidebar.is-collapsed .sidebar-user-info {
     display: none;
   }
 
-  /* Sembunyikan section title */
   .panel-sidebar.is-collapsed .sidebar-section-title {
     display: none;
   }
 
-  /* Sembunyikan teks link */
   .panel-sidebar.is-collapsed .sidebar-link span {
     display: none;
   }
 
-  /* Center link icon */
   .panel-sidebar.is-collapsed .sidebar-link {
     justify-content: center;
     padding: 10px;
   }
 
-  /* Sembunyikan teks logout */
   .panel-sidebar.is-collapsed .sidebar-logout span {
     display: none;
   }
 
-  /* Center logout */
   .panel-sidebar.is-collapsed .sidebar-logout {
     justify-content: center;
     padding: 10px;
   }
 
-  /* Main content menyesuaikan */
   .panel-main {
     transition: margin-left var(--app-transition);
   }
 
   .panel-main.is-sidebar-collapsed {
-    margin-left: calc(80px + 32px); /* ← sesuai sidebar collapse */
+    margin-left: calc(80px + 32px);
   }
 }
 
@@ -749,5 +738,129 @@
   .navbar-logout {
     width: 36px;
     height: 36px;
+  }
+}
+
+/* SAFE AREA */
+@supports (padding: env(safe-area-inset-top)) {
+  .panel-sidebar {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .panel-navbar {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .panel-content {
+    padding-left: calc(20px + env(safe-area-inset-left));
+    padding-right: calc(20px + env(safe-area-inset-right));
+  }
+
+  .panel-footer {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@media (max-width: 991.98px) {
+  @supports (padding: env(safe-area-inset-top)) {
+    .panel-navbar {
+      padding-top: env(safe-area-inset-top);
+    }
+  }
+}
+
+/* BOTTOM NAV — Mobile Only */
+.bottom-nav {
+  display: none;
+}
+
+@media (max-width: 991.98px) {
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+
+    padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
+
+    background: var(--app-glass-bg-strong);
+    backdrop-filter: blur(var(--app-glass-blur-strong));
+    -webkit-backdrop-filter: blur(var(--app-glass-blur-strong));
+
+    border-top: 1px solid var(--app-glass-border);
+    box-shadow: 0 -4px 16px rgba(45, 106, 79, 0.05);
+  }
+
+  .bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+
+    flex: 1;
+    min-width: 0;
+    min-height: 48px;
+
+    padding: 6px 4px;
+
+    color: var(--app-text-muted);
+    background: transparent;
+    border: 0;
+    border-radius: var(--app-radius-sm);
+
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-decoration: none;
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+      color var(--app-transition),
+      background var(--app-transition);
+  }
+
+  .bottom-nav-item i {
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .bottom-nav-item span {
+    display: block;
+    overflow: hidden;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .bottom-nav-item:hover {
+    color: var(--app-primary);
+    background: var(--app-primary-soft);
+  }
+
+  .bottom-nav-item.active {
+    color: var(--app-primary);
+    background: var(--app-primary-soft);
+  }
+
+  .bottom-nav-item.active i {
+    color: var(--app-primary);
+  }
+
+  .panel-content {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  }
+
+  .panel-footer {
+    display: none;
   }
 }

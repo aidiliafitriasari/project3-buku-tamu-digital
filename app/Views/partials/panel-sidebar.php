@@ -117,29 +117,15 @@ $isActive = static function (
             </div>
 
             <a
-                href="<?= base_url('admin/visits') ?>"
-                class="sidebar-link <?= $isActive('admin/visits') ?>">
+                href="<?= base_url('admin/visits?status=aktif&menu=aktif') ?>"
+                class="sidebar-link <?= $isActive('admin/visits', 'aktif') ?>">
                 <i class="bi bi-journal-text"></i>
-                <span>Semua Kunjungan</span>
+                <span>Aktif</span>
             </a>
 
             <a
-                href="<?= base_url('admin/visits?status=menunggu') ?>"
-                class="sidebar-link <?= $isActive('admin/visits', 'menunggu') ?>">
-                <i class="bi bi-hourglass-split"></i>
-                <span>Menunggu</span>
-            </a>
-
-            <a
-                href="<?= base_url('admin/visits?status=masih_berkunjung') ?>"
-                class="sidebar-link <?= $isActive('admin/visits', 'masih_berkunjung') ?>">
-                <i class="bi bi-person-walking"></i>
-                <span>Masih Berkunjung</span>
-            </a>
-
-            <a
-                href="<?= base_url('admin/visits?status=selesai') ?>"
-                class="sidebar-link <?= $isActive('admin/visits', 'selesai') ?>">
+                href="<?= base_url('admin/visits?status=riwayat&menu=riwayat') ?>"
+                class="sidebar-link <?= $isActive('admin/visits', 'riwayat') ?>">
                 <i class="bi bi-clock-history"></i>
                 <span>Riwayat</span>
             </a>
@@ -220,24 +206,28 @@ $isActive = static function (
             </div>
 
             <a
-                href="<?= base_url('petugas/visits?status=menunggu') ?>"
-                class="sidebar-link <?= $isActive('petugas/visits', 'menunggu') ?>">
-                <i class="bi bi-hourglass-split"></i>
-                <span>Menunggu</span>
+                href="<?= base_url('petugas/visits?status=aktif&menu=aktif') ?>"
+                class="sidebar-link <?= $isActive('petugas/visits', 'aktif') ?>">
+                <i class="bi bi-journal-text"></i>
+                <span>Aktif</span>
             </a>
 
             <a
-                href="<?= base_url('petugas/visits?status=masih_berkunjung') ?>"
-                class="sidebar-link <?= $isActive('petugas/visits', 'masih_berkunjung') ?>">
-                <i class="bi bi-person-walking"></i>
-                <span>Masih Berkunjung</span>
-            </a>
-
-            <a
-                href="<?= base_url('petugas/visits?status=selesai') ?>"
-                class="sidebar-link <?= $isActive('petugas/visits', 'selesai') ?>">
+                href="<?= base_url('petugas/visits?status=riwayat&menu=riwayat') ?>"
+                class="sidebar-link <?= $isActive('petugas/visits', 'riwayat') ?>">
                 <i class="bi bi-clock-history"></i>
                 <span>Riwayat</span>
+            </a>
+
+            <div class="sidebar-section-title">
+                Checkout
+            </div>
+
+            <a
+                href="<?= base_url('petugas/checkout') ?>"
+                class="sidebar-link <?= $isActive('petugas/checkout') ?>">
+                <i class="bi bi-qr-code-scan"></i>
+                <span>Scan QR</span>
             </a>
 
         <?php endif; ?>

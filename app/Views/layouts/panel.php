@@ -12,6 +12,8 @@ helper('color');
         name="viewport"
         content="width=device-width, initial-scale=1.0">
 
+    <meta name="csrf-token" content="<?= csrf_hash() ?>">
+
     <title>
         <?= $title ?? 'Panel Buku Tamu Digital' ?>
     </title>
@@ -50,7 +52,8 @@ helper('color');
 
 </head>
 
-<body data-base-url="<?= base_url() ?>">
+<body data-base-url="<?= base_url() ?>"
+    data-is-admin="<?= session()->get('role') === 'administrator' ? 'true' : 'false' ?>">
 
     <div id="panel-app">
 
@@ -72,7 +75,13 @@ helper('color');
 
     </div>
 
+    <?= $this->include('partials/panel-bottom-nav') ?>
+
     <?= $this->include('partials/toast') ?>
+
+    <?= $this->include('partials/toast-modal') ?>
+
+    <?= $this->include('partials/confirm-modal') ?>
 
     <!-- Bootstrap JS -->
     <script
@@ -82,6 +91,8 @@ helper('color');
     <!-- Custom JS -->
     <script src="<?= base_url('assets/js/app.js') ?>"></script>
     <script src="<?= base_url('assets/js/panel.js') ?>"></script>
+    <script src="<?= base_url('assets/js/confirm.js') ?>"></script>
+    <script src="<?= base_url('assets/js/toast.js') ?>"></script>
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
