@@ -44,6 +44,7 @@ $routes->group(
         // WhatsApp Settings
         $routes->get('whatsapp-settings', 'Admin\WhatsappSettingController::index');
         $routes->post('whatsapp-settings/update', 'Admin\WhatsappSettingController::update');
+        $routes->post('whatsapp-settings/test', 'Admin\WhatsappSettingController::test');
 
         // Pengguna
         $routes->get('users/partial', 'Admin\UserController::partial');

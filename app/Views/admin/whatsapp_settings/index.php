@@ -29,6 +29,18 @@
 
             <button
                 type="button"
+                class="app-btn app-btn-ghost"
+                data-bs-toggle="modal"
+                data-bs-target="#testWhatsappModal">
+
+                <i class="bi bi-send"></i>
+
+                Test Kirim WA
+
+            </button>
+
+            <button
+                type="button"
                 class="app-btn app-btn-primary"
                 data-bs-toggle="modal"
                 data-bs-target="#editWhatsappSettingsModal">
@@ -210,6 +222,7 @@
 </div>
 
 <?= view('admin/whatsapp_settings/edit', ['settings' => $settings]) ?>
+<?= view('admin/whatsapp_settings/test', ['settings' => $settings]) ?>
 
 <?= $this->endSection() ?>
 

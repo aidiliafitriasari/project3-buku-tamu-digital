@@ -536,6 +536,13 @@ class VisitController extends BaseAjaxController
                 $statusHistoryId
             );
 
+            try {
+                $whatsappService = new \App\Services\WhatsappService();
+                $whatsappService->sendToGuest((int) $id);
+            } catch (\Throwable $e) {
+                log_message('error', '[WA-1] Notif failed: ' . $e->getMessage());
+            }
+
             return $this->response->setJSON([
                 'success' => true,
                 'message' => 'Check-in berhasil.',

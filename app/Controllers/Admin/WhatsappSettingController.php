@@ -108,4 +108,49 @@ class WhatsappSettingController extends BaseController
                 'Pengaturan WhatsApp berhasil diperbarui.'
             );
     }
+
+    public function test()
+    {
+        $settings = $this->whatsappSettingModel->first();
+
+        if (! $settings) {
+            return redirect()
+                ->to('/admin/whatsapp-settings')
+                ->with('error', 'Data pengaturan WhatsApp belum tersedia.');
+        }
+
+        $phone   = trim((string) $this->request->getPost('phone'));
+        $message = trim((string) $this->request->getPost('message'));
+
+        if ($phone === '' || $message === '') {
+            return redirect()
+                ->to('/admin/whatsapp-settings')
+                ->with('error', 'Nomor HP dan pesan wajib diisi.')
+                ->with('form_id', 'test_whatsapp');
+        }
+
+        $whatsappService = new \App\Services\WhatsappService();
+        $result = $whatsappService->send($phone, $message, 'test', 0);
+
+        if ($result['success']) {
+            $suffix = $result['log_mode']
+                ? ' (log mode — tidak dikirim ke WA)'
+                : ' (outbox_id: ' . ($result['outbox_id'] ?? '-') . ')';
+
+            $this->activityLogService->log(
+                'test',
+                'whatsapp_settings',
+                'Test kirim WhatsApp ke ' . $phone . $suffix
+            );
+
+            return redirect()
+                ->to('/admin/whatsapp-settings')
+                ->with('success', $result['message'] . $suffix);
+        }
+
+        return redirect()
+            ->to('/admin/whatsapp-settings')
+            ->with('error', 'Gagal kirim WA: ' . $result['message'])
+            ->with('form_id', 'test_whatsapp');
+    }
 }

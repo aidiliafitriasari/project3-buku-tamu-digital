@@ -59,4 +59,19 @@ document.addEventListener('DOMContentLoaded', function () {
         clearAllErrors(editForm);
     });
 
+        // ===== TEST WHATSAPP MODAL =====
+    const testModal = document.getElementById('testWhatsappModal');
+
+    if (testModal) {
+        const hasTestError = testModal.dataset.testError === '1';
+
+        if (hasTestError) {
+            bootstrap.Modal.getOrCreateInstance(testModal).show();
+        }
+
+        testModal.addEventListener('show.bs.modal', function () {
+            testModal.dataset.testError = '0';
+        });
+    }
+
 });

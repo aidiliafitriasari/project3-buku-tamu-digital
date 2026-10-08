@@ -19,6 +19,20 @@ class DashboardController extends BaseController
         $visitSummary = $this->dashboardService->getVisitSummary();
         $masterSummary = $this->dashboardService->getMasterSummary();
 
+        $longVisits = $this->dashboardService->getLongVisits();
+
+        if (! empty($longVisits)) {
+            try {
+                $whatsappService = new \App\Services\WhatsappService();
+
+                foreach ($longVisits as $visit) {
+                    $whatsappService->sendWarning((int) $visit['id']);
+                }
+            } catch (\Throwable $e) {
+                log_message('error', '[WA-3] Failed: ' . $e->getMessage());
+            }
+        }
+
         $data = [
             'title' => 'Dashboard Admin',
 
@@ -35,7 +49,7 @@ class DashboardController extends BaseController
 
             // Monitoring
             'latestVisits' => $this->dashboardService->getLatestVisits(),
-            'longVisits'   => $this->dashboardService->getLongVisits(),
+            'longVisits'   => $longVisits,
 
             // Peringatan
             'visitWarning' => $this->dashboardService->getVisitWarning(),

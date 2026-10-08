@@ -227,6 +227,13 @@ class GuestController extends BaseController
                 log_message('error', 'Activity log failed for visit: ' . $visitCode);
             }
 
+            try {
+                $whatsappService = new \App\Services\WhatsappService();
+                $whatsappService->sendToEmployee($visitId);
+            } catch (\Throwable $e) {
+                log_message('error', '[WA-2] Notif failed: ' . $e->getMessage());
+            }
+
             return $this->response->setJSON([
                 'success'  => true,
                 'message'  => 'Registrasi berhasil.',
