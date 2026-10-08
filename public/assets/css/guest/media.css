@@ -1,0 +1,128 @@
+.guest-camera {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.guest-camera-preview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  max-height: 420px;
+
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-md);
+  overflow: hidden;
+}
+
+.guest-camera-preview video,
+.guest-camera-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.guest-camera-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+}
+
+.guest-camera-placeholder i {
+  font-size: 40px;
+  opacity: 0.6;
+}
+
+.guest-camera-placeholder p {
+  margin: 0;
+}
+
+.guest-camera-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.guest-camera-actions .guest-btn {
+  flex: 1;
+  min-width: 120px;
+}
+
+.guest-camera-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+
+  padding: 12px;
+  color: #b91c1c;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.14);
+  border-radius: var(--app-radius-sm);
+
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.guest-camera-error i {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.guest-camera-error p {
+  margin: 0;
+}
+
+.guest-camera-fallback {
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-sm);
+}
+
+/* SIGNATURE */
+.guest-signature {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.guest-signature-canvas {
+  width: 100%;
+  height: 200px;
+
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px dashed var(--app-border);
+  border-radius: var(--app-radius-md);
+
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.guest-signature-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.guest-signature-actions .guest-btn {
+  flex: 1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 575.98px) {
+  .guest-camera-actions .guest-btn {
+    flex: 1 1 100%;
+  }
+
+  .guest-signature-canvas {
+    height: 160px;
+  }
+}
