@@ -41,6 +41,9 @@ helper('institution');
 
     <?= $this->include('partials/dynamic-color') ?>
 
+    <!-- PWA META TAGS -->
+    <?= $this->include('partials/pwa-head') ?>
+
     <?= $this->renderSection('styles') ?>
 
 </head>
@@ -105,6 +108,7 @@ helper('institution');
     <script src="<?= base_url('assets/js/app.js') ?>"></script>
     <script src="<?= base_url('assets/js/toast.js') ?>"></script>
     <script src="<?= base_url('assets/js/confirm.js') ?>"></script>
+    <script src="<?= base_url('assets/js/pwa.js') ?>"></script>
 
     <?= $this->renderSection('scripts') ?>
 

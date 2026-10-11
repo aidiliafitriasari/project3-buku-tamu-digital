@@ -10,7 +10,7 @@ helper('color');
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0">
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <meta name="csrf-token" content="<?= csrf_hash() ?>">
 
@@ -47,6 +47,8 @@ helper('color');
 
     <!-- Shared Dynamic Color -->
     <?= $this->include('partials/dynamic-color') ?>
+
+    <?= $this->include('partials/pwa-head') ?>
 
     <?= $this->renderSection('styles') ?>
 
@@ -93,6 +95,7 @@ helper('color');
     <script src="<?= base_url('assets/js/panel.js') ?>"></script>
     <script src="<?= base_url('assets/js/confirm.js') ?>"></script>
     <script src="<?= base_url('assets/js/toast.js') ?>"></script>
+    <script src="<?= base_url('assets/js/pwa.js') ?>"></script>
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

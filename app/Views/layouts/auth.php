@@ -42,6 +42,9 @@
     <!-- Auth CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/css/login.css') ?>">
 
+    <!-- PWA META TAGS -->
+    <?= $this->include('partials/pwa-head') ?>
+
     <?= $this->renderSection('styles') ?>
 
 </head>
@@ -52,12 +55,21 @@
 
         <?= $this->renderSection('content') ?>
 
+        <!-- Toast & Modal Container -->
+        <?= $this->include('partials/toast') ?>
+        <?= $this->include('partials/toast-modal') ?>
+        <?= $this->include('partials/confirm-modal') ?>
+
     </main>
 
     <!-- Bootstrap JS -->
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
     </script>
+
+    <script src="<?= base_url('assets/js/app.js') ?>"></script>
+    <script src="<?= base_url('assets/js/toast.js') ?>"></script>
+    <script src="<?= base_url('assets/js/pwa.js') ?>"></script>
 
     <?= $this->renderSection('scripts') ?>
 

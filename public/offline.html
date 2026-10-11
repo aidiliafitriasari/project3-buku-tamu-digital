@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#00309F">
+    <title>Offline — Buku Tamu Digital</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 50%, #f0fdf4 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            padding-top: calc(20px + env(safe-area-inset-top));
+            padding-bottom: calc(20px + env(safe-area-inset-bottom));
+            color: #111;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .offline-wrapper {
+            max-width: 420px;
+            width: 100%;
+        }
+
+        .offline-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 28px;
+            padding: 40px 32px;
+            text-align: center;
+            box-shadow:
+                0 4px 24px rgba(0, 48, 159, 0.06),
+                0 1px 2px rgba(0, 0, 0, 0.02);
+        }
+
+        .offline-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: block;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 48, 159, 0.15);
+        }
+
+        .offline-icon-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 16px;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 14px;
+            color: #dc2626;
+            font-size: 22px;
+        }
+
+        .offline-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #111;
+            letter-spacing: -0.02em;
+        }
+
+        .offline-text {
+            font-size: 13px;
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .offline-hint {
+            font-size: 11px;
+            color: #9ca3af;
+            line-height: 1.5;
+            margin-bottom: 24px;
+            padding: 12px;
+            background: rgba(0, 48, 159, 0.04);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 48, 159, 0.08);
+        }
+
+        .offline-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 14px 24px;
+            background: #00309F;
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 48, 159, 0.2);
+        }
+
+        .offline-btn:hover {
+            background: #002070;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(0, 48, 159, 0.3);
+        }
+
+        .offline-btn:active {
+            transform: translateY(0);
+        }
+
+        .offline-btn-icon {
+            font-size: 16px;
+        }
+
+        .offline-footer {
+            margin-top: 24px;
+            font-size: 10px;
+            color: #9ca3af;
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+            .offline-card {
+                padding: 32px 24px;
+                border-radius: 24px;
+            }
+
+            .offline-title {
+                font-size: 20px;
+            }
+
+            .offline-logo {
+                width: 64px;
+                height: 64px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="offline-wrapper">
+
+        <div class="offline-card">
+
+            <img
+                src="/assets/icons/icon-192.png"
+                alt="Buku Tamu Digital"
+                class="offline-logo">
+
+            <div class="offline-icon-wrapper">
+                📡
+            </div>
+
+            <h1 class="offline-title">
+                Anda Sedang Offline
+            </h1>
+
+            <p class="offline-text">
+                Periksa koneksi internet Anda dan coba lagi.
+            </p>
+
+            <div class="offline-hint">
+                💡 Halaman yang pernah Anda buka masih bisa diakses dalam mode offline.
+            </div>
+
+            <button
+                type="button"
+                class="offline-btn"
+                onclick="window.location.reload()">
+                <span class="offline-btn-icon">🔄</span>
+                Coba Lagi
+            </button>
+
+        </div>
+
+        <p class="offline-footer">
+            Buku Tamu Digital
+        </p>
+
+    </div>
+
+</body>
+
+</html>

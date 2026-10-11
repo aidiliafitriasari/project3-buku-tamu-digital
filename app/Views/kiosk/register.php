@@ -457,6 +457,12 @@
             <button type="button" class="guest-btn guest-btn-secondary" data-prev="4">
                 <i class="bi bi-arrow-left"></i> Kembali
             </button>
+
+            <div class="app-alert app-alert-info">
+                <i class="bi bi-info-circle"></i>
+                <span>Pengiriman formulir hanya dilakukan saat tersedia koneksi internet.</span>
+            </div>
+
             <button type="submit" class="guest-btn guest-btn-primary" id="guestSubmitBtn">
                 <i class="bi bi-check-circle"></i> Kirim Registrasi
             </button>

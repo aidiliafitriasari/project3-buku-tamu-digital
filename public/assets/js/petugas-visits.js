@@ -5,6 +5,22 @@ document.addEventListener('DOMContentLoaded', function () {
         return document.body.dataset.baseUrl || '';
     }
 
+     // HELPER — Cek offline sebelum & sesudah fetch
+    function handleOfflineError(fallbackMessage) {
+        if (!navigator.onLine) {
+            if (typeof window.showToast === 'function') {
+                window.showToast('Anda sedang offline. Periksa koneksi internet Anda.', 'warning', 3000);
+            }
+            return 'Anda sedang offline. Periksa koneksi internet Anda.';
+        }
+
+        if (typeof window.showToast === 'function') {
+            window.showToast(fallbackMessage || 'Terjadi kesalahan. Silakan coba lagi.', 'error', 3000);
+        }
+
+        return fallbackMessage || 'Terjadi kesalahan.';
+    }
+
     function getBasePath() {
         const isAdmin = document.body.dataset.isAdmin === 'true';
         return isAdmin ? '/admin' : '/petugas';
@@ -146,7 +162,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (loadingEl) loadingEl.hidden = true;
                 if (errorEl) {
                     errorEl.hidden = false;
-                    document.getElementById('verify_error_text').textContent = 'Gagal memuat data.';
+
+                    var message = !navigator.onLine
+                        ? 'Anda sedang offline. Periksa koneksi internet Anda.'
+                        : 'Gagal memuat data.';
+
+                    document.getElementById('verify_error_text').textContent = message;
                 }
             });
     }
@@ -252,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
                 .catch(function (error) {
                     console.error('Check-in error:', error);
-                    showToast('Terjadi kesalahan. Silakan coba lagi.', 'error');
+                    handleOfflineError('Gagal memproses check-in. Silakan coba lagi.');
                     checkinBtn.disabled = false;
                     checkinBtn.innerHTML = '<i class="bi bi-check-circle"></i> Check-in';
                 });
@@ -436,7 +457,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
                 .catch(function (error) {
                     console.error('Reject error:', error);
-                    showToast('Terjadi kesalahan. Silakan coba lagi.', 'error');
+                    handleOfflineError('Gagal menolak kunjungan. Silakan coba lagi.');
                     rejectConfirmBtn.disabled = false;
                     rejectConfirmBtn.innerHTML = '<i class="bi bi-x-circle"></i> Tolak Kunjungan';
                 });
@@ -518,7 +539,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
                 .catch(function (error) {
                     console.error('Cancel error:', error);
-                    showToast('Terjadi kesalahan. Silakan coba lagi.', 'error');
+                    handleOfflineError('Gagal membatalkan kunjungan. Silakan coba lagi.');
                     cancelConfirmBtn.disabled = false;
                     cancelConfirmBtn.innerHTML = '<i class="bi bi-slash-circle"></i> Batalkan Kunjungan';
                 });
@@ -581,7 +602,7 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .catch(function (error) {
                 console.error('Fetch error:', error);
-                showToast('Gagal memuat data.', 'error');
+                handleOfflineError('Gagal memuat data checkout.');
             });
     }
 
@@ -642,7 +663,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
                 .catch(function (error) {
                     console.error('Checkout error:', error);
-                    showToast('Terjadi kesalahan. Silakan coba lagi.', 'error');
+                    handleOfflineError('Gagal memproses checkout. Silakan coba lagi.');
                     checkoutConfirmBtn.disabled = false;
                     checkoutConfirmBtn.innerHTML = '<i class="bi bi-box-arrow-right"></i> Konfirmasi Checkout';
                 });
@@ -719,7 +740,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (loadingEl) loadingEl.hidden = true;
                 if (errorEl) {
                     errorEl.hidden = false;
-                    document.getElementById('editErrorText').textContent = 'Gagal memuat data.';
+
+                    var message = !navigator.onLine
+                        ? 'Anda sedang offline. Periksa koneksi internet Anda.'
+                        : 'Gagal memuat data.';
+
+                    document.getElementById('editErrorText').textContent = message;
                 }
             });
     }
@@ -923,7 +949,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
                 .catch(function (error) {
                     console.error('Edit submit error:', error);
-                    showToast('Terjadi kesalahan. Silakan coba lagi.', 'error');
+                    handleOfflineError('Gagal menyimpan perubahan. Silakan coba lagi.');
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = '<i class="bi bi-save"></i> Simpan Perubahan';
                 });
