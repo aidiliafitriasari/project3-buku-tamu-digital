@@ -4,8 +4,7 @@
     data-bs-backdrop="static"
     data-bs-keyboard="false"
     tabindex="-1"
-    aria-labelledby="toggleDepartmentModalLabel"
-    aria-hidden="true">
+    aria-labelledby="toggleDepartmentModalLabel">
 
     <div class="modal-dialog modal-dialog-centered">
 

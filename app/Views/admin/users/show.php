@@ -4,8 +4,7 @@
     data-bs-backdrop="static"
     data-bs-keyboard="false"
     tabindex="-1"
-    aria-labelledby="showUserModalLabel"
-    aria-hidden="true">
+    aria-labelledby="showUserModalLabel">
 
     <div class="modal-dialog modal-dialog-centered">
 

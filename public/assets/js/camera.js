@@ -130,6 +130,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function showCameraError() {
+         if (stream) {
+            return;
+        }
+
         errorBox.hidden = false;
         fallbackBox.hidden = false;
 
@@ -137,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function () {
         video.hidden = true;
         photo.hidden = true;
 
-        btnStart.hidden = true;
+        btnStart.hidden = false;
         btnCapture.hidden = true;
         btnRetake.hidden = true;
         btnStop.hidden = true;

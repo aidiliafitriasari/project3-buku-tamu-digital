@@ -45,27 +45,6 @@
             atau
         </div>
 
-        <div style="text-align: left;">
-            <label for="checkoutScanToken" class="checkout-detail-label" style="display: block; margin-bottom: 6px;">
-                Input Token QR Manual
-            </label>
-            <input
-                type="text"
-                id="checkoutScanToken"
-                class="checkout-scan-input"
-                placeholder="Masukkan token QR..."
-                autocomplete="off">
-        </div>
-
-        <button
-            type="button"
-            class="checkout-btn checkout-btn-primary checkout-btn-block"
-            id="checkoutScanSubmit"
-            style="margin-top: 12px;">
-            <i class="bi bi-check-circle"></i>
-            Proses Token
-        </button>
-
     </div>
 
 </div>

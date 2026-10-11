@@ -36,6 +36,13 @@ class UserController extends BaseAjaxController
         return 'admin/users/_table';
     }
 
+    protected function getDefaultOrder(): array
+    {
+        return [
+            'created_at' => 'DESC',
+        ];
+    }
+
     protected function applySearch(
         BaseBuilder $builder,
         string $search

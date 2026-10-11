@@ -20,8 +20,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function initScanner(baseUrl) {
         const btnStart = document.getElementById('checkoutScanStart');
         const btnStop  = document.getElementById('checkoutScanStop');
-        const tokenInput = document.getElementById('checkoutScanToken');
-        const btnSubmit = document.getElementById('checkoutScanSubmit');
 
         let html5QrCode = null;
         let isScanning = false;
@@ -123,25 +121,6 @@ document.addEventListener('DOMContentLoaded', function () {
             btnStop.addEventListener('click', stopScan);
         }
 
-        if (btnSubmit && tokenInput) {
-            btnSubmit.addEventListener('click', function () {
-                const token = tokenInput.value.trim();
-
-                if (!token) {
-                    showToast('Token QR wajib diisi.', 'warning');
-                    return;
-                }
-
-                redirectToCheckout(token);
-            });
-
-            tokenInput.addEventListener('keypress', function (e) {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    btnSubmit.click();
-                }
-            });
-        }
     }
 
     // Konfirmasi Checkout

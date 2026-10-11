@@ -227,7 +227,7 @@ $isAdmin = $isAdmin ?? false;
     <div class="app-empty">
 
         <div class="app-empty-icon">
-            <i class="bi bi-journal-x"></i>
+            <i class="bi bi-inbox"></i>
         </div>
 
         <h2 class="app-empty-title">

@@ -13,8 +13,7 @@ $validationErrors = $hasEditErrors ? $errors : [];
     data-bs-backdrop="static"
     data-bs-keyboard="false"
     tabindex="-1"
-    aria-labelledby="editInstitutionModalLabel"
-    aria-hidden="true">
+    aria-labelledby="editInstitutionModalLabel">
 
     <div class="modal-dialog modal-dialog-centered modal-lg">
 

@@ -12,8 +12,7 @@ $hasTestError = ($formId === 'test_whatsapp');
     data-bs-backdrop="static"
     data-bs-keyboard="false"
     tabindex="-1"
-    aria-labelledby="testWhatsappModalLabel"
-    aria-hidden="true">
+    aria-labelledby="testWhatsappModalLabel">
 
     <div class="modal-dialog modal-dialog-centered">
 

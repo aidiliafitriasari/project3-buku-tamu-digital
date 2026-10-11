@@ -4,8 +4,7 @@
     data-bs-backdrop="static"
     data-bs-keyboard="false"
     tabindex="-1"
-    aria-labelledby="editVisitModalLabel"
-    aria-hidden="true">
+    aria-labelledby="editVisitModalLabel">
 
     <div class="modal-dialog modal-dialog-centered modal-lg">
 

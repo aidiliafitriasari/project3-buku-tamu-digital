@@ -13,8 +13,7 @@ $validationErrors = $hasEditErrors ? $errors : [];
     data-bs-backdrop="static"
     data-bs-keyboard="false"
     tabindex="-1"
-    aria-labelledby="editWhatsappSettingsModalLabel"
-    aria-hidden="true">
+    aria-labelledby="editWhatsappSettingsModalLabel">
 
     <div class="modal-dialog modal-dialog-centered modal-lg">
 

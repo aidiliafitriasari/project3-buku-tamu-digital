@@ -13,8 +13,7 @@ $validationErrors = $hasCreateErrors ? $errors : [];
     data-bs-backdrop="static"
     data-bs-keyboard="false"
     tabindex="-1"
-    aria-labelledby="createVisitPurposeModalLabel"
-    aria-hidden="true">
+    aria-labelledby="createVisitPurposeModalLabel">
 
     <div class="modal-dialog modal-dialog-centered">
 

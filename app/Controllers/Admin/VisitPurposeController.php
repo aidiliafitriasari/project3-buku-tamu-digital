@@ -39,7 +39,7 @@ class VisitPurposeController extends BaseAjaxController
     protected function getDefaultOrder(): array
     {
         return [
-            'name' => 'ASC',
+            'created_at' => 'DESC',
         ];
     }
 

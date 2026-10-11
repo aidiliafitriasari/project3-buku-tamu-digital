@@ -4,8 +4,7 @@
     data-bs-backdrop="static"
     data-bs-keyboard="false"
     tabindex="-1"
-    aria-labelledby="restoreVisitModalLabel"
-    aria-hidden="true">
+    aria-labelledby="restoreVisitModalLabel">
 
     <div class="modal-dialog modal-dialog-centered">
 

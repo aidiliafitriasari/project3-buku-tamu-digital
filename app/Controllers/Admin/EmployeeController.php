@@ -114,7 +114,7 @@ class EmployeeController extends BaseAjaxController
     protected function getDefaultOrder(): array
     {
         return [
-            'employees.name' => 'ASC',
+            'employees.created_at' => 'DESC',
         ];
     }
 
