@@ -59,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function () {
         clearAllErrors(editForm);
     });
 
-        // ===== TEST WHATSAPP MODAL =====
     const testModal = document.getElementById('testWhatsappModal');
 
     if (testModal) {

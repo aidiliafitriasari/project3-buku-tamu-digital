@@ -92,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function () {
         clearAllErrors(form);
     }
 
-
     // VALIDATORS
     const validators = {
         name: function (value) {
@@ -131,7 +130,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (firstInvalid) firstInvalid.focus();
         return isValid;
     }
-
 
     // CREATE MODAL
     const createModal = document.getElementById('createVisitPurposeModal');
@@ -233,7 +231,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-
     // DELETE MODAL
     const deleteModal = document.getElementById('deleteVisitPurposeModal');
     const deleteForm = document.getElementById('deleteVisitPurposeForm');
@@ -254,7 +251,6 @@ document.addEventListener('DOMContentLoaded', function () {
             deleteForm.action = '';
         });
     }
-
 
     // TOGGLE MODAL
     const toggleModal = document.getElementById('toggleVisitPurposeModal');
@@ -309,7 +305,6 @@ document.addEventListener('DOMContentLoaded', function () {
             toggleForm.action = '';
         });
     }
-
 
     // RESTORE MODAL
     const restoreModal = document.getElementById('restoreVisitPurposeModal');

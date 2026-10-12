@@ -191,7 +191,7 @@
                 $endPage = min($pageCount, $currentPage + 2);
                 ?>
 
-                <!-- PREVIOUS (selalu tampil) -->
+                <!-- PREVIOUS -->
                 <button
                     type="button"
                     class="master-pagination-button"

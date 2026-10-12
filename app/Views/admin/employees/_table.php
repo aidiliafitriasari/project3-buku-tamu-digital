@@ -82,7 +82,6 @@
     </div>
 
     <!-- MOBILE LIST -->
-
     <div class="master-mobile-list">
 
         <?php foreach ($items as $employee): ?>
@@ -127,7 +126,6 @@
     </div>
 
     <!-- PAGINATION -->
-
     <?php if (! empty($pagination)): ?>
 
         <div class="master-pagination" id="employeesPagination">

@@ -10,8 +10,6 @@ use CodeIgniter\HTTP\ResponseInterface;
 class AuthFilter implements FilterInterface
 {
 
-    // Memastikan user sudah login sebelum mengakses halaman yang membutuhkan autentikasi.
-
     public function before(RequestInterface $request, $arguments = null)
     {
         if (! session()->get('is_logged_in')) {
@@ -55,7 +53,5 @@ class AuthFilter implements FilterInterface
         RequestInterface $request,
         ResponseInterface $response,
         $arguments = null
-    ) {
-        // Tidak digunakan.
-    }
+    ) {}
 }

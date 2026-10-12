@@ -79,8 +79,8 @@
         }
 
         toast.textContent = isOnline
-            ? '✅ Koneksi kembali'
-            : '⚠️ Anda sedang offline';
+            ? 'Koneksi kembali'
+            : 'Anda sedang offline';
 
         toast.classList.toggle('is-online', isOnline);
         toast.classList.toggle('is-offline', !isOnline);

@@ -416,7 +416,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (editUserModalElement.dataset.editUserError === '1') {
                     editUserForm.action = '';
-                    editUserModalElement.dataset.editUserError = '0';  
+                    editUserModalElement.dataset.editUserError = '0';
                     return;
                 }
 
@@ -425,7 +425,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         );
     }
-    
+
     // SHOW MODAL
     const showUserModalElement =
         document.getElementById('showUserModal');

@@ -40,23 +40,12 @@ class WhatsappService
         return $this->enabled;
     }
 
-    // ============================================================
     // PUBLIC API
-    // ============================================================
-
-    /**
-     * Cek status gateway Wakita.
-     */
     public function checkGateway(): array
     {
         return $this->request('GET', '/status');
     }
 
-    /**
-     * Kirim pesan WhatsApp.
-     *
-     * @return array{success:bool,message:string,outbox_id:?int,log_mode:bool}
-     */
     public function send(string $phone, string $message, string $type, int $visitId = 0): array
     {
         $phone = $this->normalizePhone($phone);
@@ -70,7 +59,6 @@ class WhatsappService
             ];
         }
 
-        // ===== LOG MODE =====
         if (! $this->enabled) {
             $this->writeLog('LOG MODE', $phone, $message, $type, $visitId);
 
@@ -82,7 +70,6 @@ class WhatsappService
             ];
         }
 
-        // ===== REAL SEND =====
         $result = $this->request('POST', '/send', [
             'number'  => $phone,
             'message' => $message,
@@ -119,10 +106,7 @@ class WhatsappService
         ];
     }
 
-    // ============================================================
-    // WA-1 : Kirim QR & kode ke Tamu
-    // ============================================================
-
+    // TAMU
     public function sendToGuest(int $visitId): bool
     {
         $settings = $this->settingModel->first();
@@ -149,10 +133,7 @@ class WhatsappService
         return (bool) $result['success'];
     }
 
-    // ============================================================
-    // WA-2 : Kirim notifikasi ke Pegawai tujuan
-    // ============================================================
-
+    // PEGAWAI
     public function sendToEmployee(int $visitId): bool
     {
         $settings = $this->settingModel->first();
@@ -179,13 +160,9 @@ class WhatsappService
         return (bool) $result['success'];
     }
 
-    // ============================================================
-    // WA-3 : Peringatan kunjungan terlalu lama (anti-spam)
-    // ============================================================
-
+    // PERINGATAN KUNJUNGAN TERLALU LAMA
     public function sendWarning(int $visitId): bool
     {
-        // Anti-spam — sudah pernah kirim peringatan untuk visit ini
         if ($this->hasSentWarning($visitId)) {
             return false;
         }
@@ -205,9 +182,8 @@ class WhatsappService
         $template = (string) ($settings['employee_template'] ?? '');
         $base     = $this->replacePlaceholders($template, $visit);
 
-        // Tambahkan info durasi di depan template
         $duration = (int) ($visit['duration_minutes'] ?? 0);
-        $message  = "⏰ Peringatan Kunjungan Terlalu Lama\n"
+        $message  = "Peringatan Kunjungan Terlalu Lama\n"
             . "Tamu: {$visit['guest_name']}\n"
             . "Durasi: {$duration} menit (belum checkout)\n\n"
             . $base;
@@ -216,10 +192,6 @@ class WhatsappService
 
         return (bool) $result['success'];
     }
-
-    // ============================================================
-    // INTERNAL
-    // ============================================================
 
     protected function request(string $method, string $endpoint, array $data = []): array
     {
@@ -286,7 +258,6 @@ class WhatsappService
             return null;
         }
 
-        // Hitung durasi untuk WA-3
         if (! empty($visit['checkin_at'])) {
             $visit['duration_minutes'] = max(
                 0,

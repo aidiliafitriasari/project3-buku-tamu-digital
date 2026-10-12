@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const editForm = editModal.querySelector('form');
-    
+
     function clearAllErrors(form) {
         if (!form) return;
 
@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
             field.value = field.dataset.originalValue;
         });
     }
-
 
     // PREVIEW LOGO REAL-TIME
     const logoInput = document.getElementById('edit_logo');
@@ -59,7 +58,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-
     // AUTO SHOW MODAL KALAU VALIDASI GAGAL
     const hasEditErrors = editModal.dataset.editError === '1';
 
@@ -67,12 +65,11 @@ document.addEventListener('DOMContentLoaded', function () {
         bootstrap.Modal.getOrCreateInstance(editModal).show();
     }
 
-
     // SAAT MODAL DIBUKA DARI TOMBOL
     editModal.addEventListener('show.bs.modal', function (event) {
 
         if (event.relatedTarget) {
-           
+
             restoreOriginalValues(editForm);
             clearAllErrors(editForm);
 
@@ -80,8 +77,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-
-    // ===== CLEANUP SAAT MODAL DITUTUP =====
     editModal.addEventListener('hidden.bs.modal', function () {
 
         if (editModal.dataset.editError === '1') {

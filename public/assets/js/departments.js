@@ -91,9 +91,6 @@ document.addEventListener('DOMContentLoaded', function () {
         clearAllErrors(form);
     }
 
-
-    /* ===== VALIDATOR ===== */
-
     const validators = {
         name: function (value) {
             value = (value || '').trim();
@@ -140,9 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return isValid;
     }
 
-
-    /* ===== CREATE MODAL ===== */
-
+    // CREATE MODAL
     const createModal = document.getElementById('createDepartmentModal');
 
     if (createModal) {
@@ -324,7 +319,6 @@ document.addEventListener('DOMContentLoaded', function () {
             toggleForm.action = '';
         });
     }
-
 
     // RESTORE MODAL
     const restoreModal = document.getElementById('restoreDepartmentModal');

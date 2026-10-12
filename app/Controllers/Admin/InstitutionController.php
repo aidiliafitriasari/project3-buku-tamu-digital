@@ -94,7 +94,6 @@ class InstitutionController extends BaseController
 
             $newFileName = $logo->getRandomName();
 
-            // 🔥 CEK HASIL MOVE
             if (! $logo->move($uploadPath, $newFileName)) {
 
                 return redirect()

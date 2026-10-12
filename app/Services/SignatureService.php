@@ -91,7 +91,6 @@ class SignatureService
     protected function detectMimeType(string $filePath): string
     {
         if (! function_exists('finfo_open')) {
-            // Fallback ke mime_content_type
             return mime_content_type($filePath) ?: '';
         }
 

@@ -167,7 +167,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return isValid;
     }
 
-
     // CREATE MODAL
     const createModal = document.getElementById('createEmployeeModal');
 
@@ -209,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             createModal.addEventListener('hidden.bs.modal', function () {
-                
+
                 if (createModal.dataset.createError === '1') {
                     createModal.dataset.createError = '0';
                     return;
@@ -218,7 +217,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     }
-
 
     // EDIT MODAL
     const editModal = document.getElementById('editEmployeeModal');
@@ -293,7 +291,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-
     // DETAIL MODAL
     const detailModal = document.getElementById('detailEmployeeModal');
 
@@ -323,7 +320,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-
     // DELETE MODAL
     const deleteModal = document.getElementById('deleteEmployeeModal');
     const deleteForm = document.getElementById('deleteEmployeeForm');
@@ -346,7 +342,6 @@ document.addEventListener('DOMContentLoaded', function () {
             deleteForm.action = '';
         });
     }
-
 
     // TOGGLE MODAL
     const toggleModal = document.getElementById('toggleEmployeeModal');
@@ -408,7 +403,6 @@ document.addEventListener('DOMContentLoaded', function () {
             toggleForm.action = '';
         });
     }
-
 
     // RESTORE MODAL
     const restoreModal = document.getElementById('restoreEmployeeModal');

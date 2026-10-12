@@ -401,7 +401,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const reasonError = document.getElementById('reject_reason_error');
             const reason = reasonInput.value.trim();
 
-            // Reset error
             if (reasonError) {
                 reasonError.hidden = true;
                 reasonError.textContent = '';

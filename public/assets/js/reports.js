@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // ============================================================
     updateExportLinks();
 
     // TOGGLE CUSTOM DATE FIELDS

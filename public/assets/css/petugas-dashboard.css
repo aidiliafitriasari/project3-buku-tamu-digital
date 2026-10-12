@@ -23,9 +23,6 @@
   background: var(--app-status-dibatalkan-bg);
 }
 
-/* Style tabel kunjungan pada Dashboard Petugas
-   agar konsisten dengan pendekatan iOS 26 Look. */
-
 .dashboard-monitor-card .table-responsive {
   padding: 0 var(--app-space-3) var(--app-space-3);
 }
