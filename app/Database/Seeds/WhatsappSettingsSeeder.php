@@ -15,12 +15,12 @@ class WhatsappSettingsSeeder extends Seeder
         if ($exists === 0) {
             $this->db->table('whatsapp_settings')->insert([
                 'is_enabled'       => false,
-                'api_url'          => "https://wakita.aminsproject.com/api/v1",
-                'api_key'          => "wgk_10_9332dd417c61c2363ca6d63cb03fad71",
+                'api_url'          => null,
+                'api_key'          => null,
                 'guest_enabled'   => true,
                 'guest_template'  => "Halo {nama_tamu},\n\n"
                     . "Kunjungan Anda telah diverifikasi oleh petugas.\n\n"
-                    . "📋 Detail Kunjungan:\n"
+                    . "Detail Kunjungan:\n"
                     . "• Kode: {kode_kunjungan}\n"
                     . "• Instansi: {instansi}\n"
                     . "• Departemen: {departemen}\n"
@@ -28,7 +28,7 @@ class WhatsappSettingsSeeder extends Seeder
                     . "• Keperluan: {keperluan}\n"
                     . "• Rombongan: {rombongan} orang\n"
                     . "• Waktu: {waktu}\n\n"
-                    . "🔑 Link QR Code kunjungan Anda:\n"
+                    . "Link QR Code kunjungan Anda:\n"
                     . "{link_qr}\n\n"
                     . "Simpan pesan ini untuk checkout.\n\n"
                     . "Terima kasih.",

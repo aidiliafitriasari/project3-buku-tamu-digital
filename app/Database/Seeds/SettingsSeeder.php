@@ -14,7 +14,7 @@ class SettingsSeeder extends Seeder
 
         if ($exists === 0) {
             $this->db->table('settings')->insert([
-                'primary_color'      => '#00309F',
+                'primary_color'      => '#1e750b',
                 'photo_required'     => true,
                 'signature_required' => true,
                 'max_photo_size'     => 500,
