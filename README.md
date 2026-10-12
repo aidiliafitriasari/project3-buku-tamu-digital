@@ -6,7 +6,7 @@ Buku Tamu Digital merupakan aplikasi berbasis web yang dikembangkan untuk memper
 
 Aplikasi ini dirancang untuk mendukung berbagai kebutuhan pencatatan kunjungan, seperti pada sekolah, kantor desa, instansi pemerintah, perusahaan, hotel, dan tempat pelayanan publik.
 
-Project dikembangkan menggunakan **CodeIgniter 4** dengan pendekatan desain **iOS 26 Look — Liquid Glass**, serta memperhatikan keamanan data, kemudahan penggunaan, dan responsivitas pada berbagai perangkat.
+Project dikembangkan menggunakan **CodeIgniter 4** dengan pendekatan desain **iOS 26 Look — Liquid Glass**, serta memperhatikan keamanan data, kemudahan penggunaan, dan responsivitas pada berbagai perangkat yaitu Desktop, Tablet, Mobile.
 
 ---
 
