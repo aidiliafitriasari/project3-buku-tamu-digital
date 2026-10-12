@@ -1,6 +1,6 @@
 {
-    "name": "codeigniter4/appstarter",
-    "description": "CodeIgniter4 starter app",
+    "name": "aidilia/project-buku-tamu-digital",
+    "description": "Aplikasi berbasis web yang dikembangkan untuk mempermudah proses registrasi, pencatatan, pemantauan, dan pengelolaan kunjungan tamu secara digital.",
     "license": "MIT",
     "type": "project",
     "homepage": "https://codeigniter.com",
