@@ -2,9 +2,36 @@
 .guest-body {
   min-height: 100vh;
   margin: 0;
+  background-color: var(--app-bg);
+}
+
+.guest-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(
+      circle at 20% 20%,
+      var(--app-primary-soft) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      var(--app-primary-soft) 0%,
+      transparent 50%
+    ),
+    radial-gradient(circle, var(--app-primary-soft) 1px, transparent 1px);
+  background-size:
+    auto,
+    auto,
+    24px 24px;
 }
 
 #guest-app {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -21,6 +48,33 @@
   -webkit-backdrop-filter: blur(var(--app-glass-blur-strong));
 
   border-bottom: 1px solid var(--app-glass-border);
+
+  transition:
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.guest-header.is-scrolled {
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+}
+
+.guest-header.is-scrolled .guest-header-inner {
+  padding: 10px 20px;
+}
+
+.guest-header.is-scrolled .guest-header-logo,
+.guest-header.is-scrolled .guest-header-logo-placeholder {
+  width: 36px;
+  height: 36px;
+}
+
+.guest-header.is-scrolled .guest-header-title {
+  font-size: 14px;
+}
+
+.guest-header.is-scrolled .guest-header-subtitle {
+  opacity: 0;
+  max-height: 0;
 }
 
 .guest-header-inner {
@@ -80,6 +134,12 @@
   color: var(--app-text-muted);
   font-size: 11px;
   line-height: 1.5;
+
+  max-height: 40px;
+  overflow: hidden;
+  transition:
+    opacity 0.3s ease,
+    max-height 0.3s ease;
 }
 
 /* CONTENT */
@@ -93,22 +153,23 @@
 
 /* PAGE HEADER */
 .guest-page-header {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   text-align: center;
 }
 
 .guest-page-title {
   margin: 0;
   color: var(--app-text-primary);
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 700;
+  letter-spacing: -0.4px;
   line-height: 1.3;
 }
 
 .guest-page-subtitle {
-  margin: 6px 0 0;
+  margin: 8px 0 0;
   color: var(--app-text-secondary);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.6;
 }
 
@@ -116,20 +177,49 @@
 .guest-card {
   overflow: hidden;
 
-  background: var(--app-glass-bg);
-  backdrop-filter: blur(var(--app-glass-blur));
-  -webkit-backdrop-filter: blur(var(--app-glass-blur));
+  background: var(--app-glass-bg-strong, rgba(255, 255, 255, 0.92));
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
 
-  border: 1px solid var(--app-glass-border);
+  border: 1px solid rgba(255, 255, 255, 0.75);
   border-radius: var(--app-radius-lg);
-  box-shadow: var(--app-shadow-sm);
+  box-shadow:
+    0 24px 60px rgba(15, 23, 42, 0.08),
+    0 8px 24px rgba(15, 23, 42, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 
   padding: 24px;
   margin-bottom: 16px;
 }
 
+@supports not (backdrop-filter: blur(24px)) {
+  .guest-card {
+    background: rgba(255, 255, 255, 0.95);
+  }
+}
+
 .guest-card:last-child {
   margin-bottom: 0;
+}
+
+.guest-card:first-of-type {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    var(--app-primary-soft) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.85);
+}
+
+.guest-card:first-of-type .guest-card-title {
+  font-size: 22px;
+}
+
+.guest-card:first-of-type .guest-card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  font-size: 24px;
 }
 
 .guest-card-header {
@@ -140,8 +230,8 @@
 }
 
 .guest-card-icon {
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -150,12 +240,15 @@
   color: #fff;
   background: linear-gradient(
     135deg,
-    var(--app-primary),
-    var(--app-primary-light)
+    var(--app-primary-dark) 0%,
+    var(--app-primary) 50%,
+    var(--app-primary-light) 100%
   );
-  border-radius: var(--app-radius-sm);
-  box-shadow: var(--app-shadow-sm);
-  font-size: 18px;
+  border-radius: 14px;
+  box-shadow:
+    0 8px 20px rgba(45, 106, 79, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  font-size: 20px;
 }
 
 .guest-card-title {
@@ -260,15 +353,29 @@
 
 .guest-btn-primary {
   color: #fff;
-  background: var(--app-primary);
+  background: linear-gradient(
+    135deg,
+    var(--app-primary-dark) 0%,
+    var(--app-primary) 100%
+  );
   border-color: var(--app-primary);
-  box-shadow: var(--app-shadow-sm);
+  box-shadow:
+    0 10px 24px rgba(45, 106, 79, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .guest-btn-primary:hover {
   color: #fff;
-  background: var(--app-primary-dark);
+  background: linear-gradient(
+    135deg,
+    var(--app-primary-dark) 0%,
+    var(--app-primary) 100%
+  );
   border-color: var(--app-primary-dark);
+  box-shadow:
+    0 14px 32px rgba(45, 106, 79, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
 }
 
 .guest-btn-secondary {

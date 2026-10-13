@@ -1,3 +1,29 @@
+(function () {
+  'use strict';
+
+  const header = document.querySelector('.guest-header');
+  if (!header) return;
+
+  const THRESHOLD = 40;
+  let isScrolled = false;
+
+  function handleScroll() {
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > THRESHOLD && !isScrolled) {
+      header.classList.add('is-scrolled');
+      isScrolled = true;
+    } else if (currentScroll <= THRESHOLD && isScrolled) {
+      header.classList.remove('is-scrolled');
+      isScrolled = false;
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+})();
+
+
 document.addEventListener('DOMContentLoaded', function () {
 
     const form = document.getElementById('guestRegisterForm');
