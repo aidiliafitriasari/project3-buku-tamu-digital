@@ -56,6 +56,9 @@ helper('institution');
 
 <body data-base-url="<?= base_url() ?>" class="guest-body">
 
+    <!-- BACKGROUND DECORATION -->
+    <div class="guest-bg" aria-hidden="true"></div>
+
     <div id="guest-app">
 
         <?= $this->include('partials/guest-header') ?>
@@ -86,6 +89,7 @@ helper('institution');
     <script src="<?= base_url('assets/js/toast.js') ?>"></script>
     <script src="<?= base_url('assets/js/confirm.js') ?>"></script>
     <script src="<?= base_url('assets/js/pwa.js') ?>"></script>
+    <script src="<?= base_url('assets/js/guest.js') ?>"></script>
 
     <?= $this->renderSection('scripts') ?>
 

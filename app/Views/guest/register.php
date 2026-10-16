@@ -1,7 +1,6 @@
 <?= $this->extend('layouts/guest') ?>
 
 <?= $this->section('styles') ?>
-<link rel="stylesheet" href="<?= base_url('assets/css/guest.css') ?>">
 <link rel="stylesheet" href="<?= base_url('assets/css/guest/media.css') ?>">
 <link rel="stylesheet" href="<?= base_url('assets/css/guest/consent.css') ?>">
 <?= $this->endSection() ?>
@@ -21,23 +20,33 @@
     </div>
     <div class="guest-progress-steps">
         <div class="guest-progress-step is-active" data-step="1">
-            <span class="guest-progress-dot">1</span>
+            <span class="guest-progress-dot">
+                <i class="bi bi-person-vcard"></i>
+            </span>
             <span class="guest-progress-label">Identitas</span>
         </div>
         <div class="guest-progress-step" data-step="2">
-            <span class="guest-progress-dot">2</span>
+            <span class="guest-progress-dot">
+                <i class="bi bi-signpost-split"></i>
+            </span>
             <span class="guest-progress-label">Tujuan</span>
         </div>
         <div class="guest-progress-step" data-step="3">
-            <span class="guest-progress-dot">3</span>
+            <span class="guest-progress-dot">
+                <i class="bi bi-camera"></i>
+            </span>
             <span class="guest-progress-label">Foto</span>
         </div>
         <div class="guest-progress-step" data-step="4">
-            <span class="guest-progress-dot">4</span>
+            <span class="guest-progress-dot">
+                <i class="bi bi-vector-pen"></i>
+            </span>
             <span class="guest-progress-label">Tanda Tangan</span>
         </div>
         <div class="guest-progress-step" data-step="5">
-            <span class="guest-progress-dot">5</span>
+            <span class="guest-progress-dot">
+                <i class="bi bi-shield-check"></i>
+            </span>
             <span class="guest-progress-label">Persetujuan</span>
         </div>
     </div>
@@ -64,17 +73,14 @@
 
     <div class="guest-card guest-step is-active" data-step="1">
 
-        <div class="guest-card-header">
-            <div class="guest-card-icon">
-                <i class="bi bi-person-vcard"></i>
-            </div>
-            <div>
-                <h2 class="guest-card-title">Data Identitas</h2>
-                <p class="guest-card-description">
-                    Isi data identitas dan asal instansi Anda.
-                </p>
-            </div>
+        <div class="guest-card-header-center">
+            <h2 class="guest-card-title-center">Data Identitas</h2>
+            <p class="guest-card-description-center">
+                Isi data identitas dan asal instansi Anda.
+            </p>
         </div>
+
+        <div class="guest-card-divider"></div>
 
         <div class="guest-form">
 
@@ -189,7 +195,7 @@
 
         <div class="guest-form-actions">
             <div></div>
-            <button type="button" class="guest-btn guest-btn-primary" data-next="2">
+            <button type="button" class="guest-btn guest-btn-glass-primary" data-next="2">
                 Lanjut <i class="bi bi-arrow-right"></i>
             </button>
         </div>
@@ -198,17 +204,14 @@
 
     <div class="guest-card guest-step" data-step="2">
 
-        <div class="guest-card-header">
-            <div class="guest-card-icon">
-                <i class="bi bi-signpost-split"></i>
-            </div>
-            <div>
-                <h2 class="guest-card-title">Tujuan & Keperluan</h2>
-                <p class="guest-card-description">
-                    Pilih tujuan kunjungan dan keperluan Anda.
-                </p>
-            </div>
+        <div class="guest-card-header-center">
+            <h2 class="guest-card-title-center">Tujuan & Keperluan</h2>
+            <p class="guest-card-description-center">
+                Pilih tujuan kunjungan dan keperluan Anda.
+            </p>
         </div>
+
+        <div class="guest-card-divider"></div>
 
         <div class="guest-form">
 
@@ -292,7 +295,7 @@
             <button type="button" class="guest-btn guest-btn-secondary" data-prev="1">
                 <i class="bi bi-arrow-left"></i> Kembali
             </button>
-            <button type="button" class="guest-btn guest-btn-primary" data-next="3">
+            <button type="button" class="guest-btn guest-btn-glass-primary" data-next="3">
                 Lanjut <i class="bi bi-arrow-right"></i>
             </button>
         </div>
@@ -301,17 +304,14 @@
 
     <div class="guest-card guest-step" data-step="3">
 
-        <div class="guest-card-header">
-            <div class="guest-card-icon">
-                <i class="bi bi-camera"></i>
-            </div>
-            <div>
-                <h2 class="guest-card-title">Foto Tamu</h2>
-                <p class="guest-card-description">
-                    Ambil foto Anda menggunakan kamera.
-                </p>
-            </div>
+        <div class="guest-card-header-center">
+            <h2 class="guest-card-title-center">Foto Tamu</h2>
+            <p class="guest-card-description-center">
+                Ambil foto Anda menggunakan kamera.
+            </p>
         </div>
+
+        <div class="guest-card-divider"></div>
 
         <div class="guest-camera" id="guestCamera">
 
@@ -325,10 +325,10 @@
             </div>
 
             <div class="guest-camera-actions">
-                <button type="button" class="guest-btn guest-btn-primary" id="guestCameraStart">
+                <button type="button" class="guest-btn guest-btn-glass-primary" id="guestCameraStart">
                     <i class="bi bi-camera-video"></i> Buka Kamera
                 </button>
-                <button type="button" class="guest-btn guest-btn-primary" id="guestCameraCapture" hidden>
+                <button type="button" class="guest-btn guest-btn-glass-primary" id="guestCameraCapture" hidden>
                     <i class="bi bi-camera"></i> Ambil Foto
                 </button>
                 <button type="button" class="guest-btn guest-btn-secondary" id="guestCameraRetake" hidden>
@@ -345,44 +345,68 @@
             </div>
 
             <div class="guest-camera-fallback" id="guestCameraFallback" hidden>
-                <label for="photo_fallback" class="guest-form-label">
-                    Upload Foto (Fallback)
+
+                <div class="guest-fallback-heading">
+                    <div class="guest-fallback-icon">
+                        <i class="bi bi-image"></i>
+                    </div>
+
+                    <div class="guest-fallback-info">
+                        <label for="photo_fallback" class="guest-form-label">
+                            Upload Foto Tamu
+                        </label>
+                        <p>JPG, PNG, atau WEBP</p>
+                    </div>
+                </div>
+
+                <label for="photo_fallback" class="guest-fallback-upload">
+                    <i class="bi bi-cloud-arrow-up"></i>
+                    <span>Pilih Foto dari Perangkat</span>
                 </label>
+
                 <input
                     type="file"
                     id="photo_fallback"
-                    class="guest-form-input"
+                    class="guest-fallback-input"
                     accept="image/jpeg,image/png,image/webp">
+
+                <div class="guest-fallback-preview" id="guestFallbackPreview" hidden>
+                    <img id="guestFallbackPhoto" alt="Preview Foto Tamu">
+
+                    <div class="guest-fallback-file-info">
+                        <i class="bi bi-file-earmark-image"></i>
+                        <span id="guestFallbackFileName">Foto terpilih</span>
+                        <span class="guest-fallback-status">Terpilih</span>
+                    </div>
+                </div>
+
             </div>
 
-        </div>
+            <div class="guest-form-error" data-error-for="photo"></div>
 
-        <div class="guest-form-error" data-error-for="photo"></div>
+            <div class="guest-form-actions">
+                <button type="button" class="guest-btn guest-btn-secondary" data-prev="2">
+                    <i class="bi bi-arrow-left"></i> Kembali
+                </button>
+                <button type="button" class="guest-btn guest-btn-glass-primary" data-next="4">
+                    Lanjut <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
 
-        <div class="guest-form-actions">
-            <button type="button" class="guest-btn guest-btn-secondary" data-prev="2">
-                <i class="bi bi-arrow-left"></i> Kembali
-            </button>
-            <button type="button" class="guest-btn guest-btn-primary" data-next="4">
-                Lanjut <i class="bi bi-arrow-right"></i>
-            </button>
         </div>
 
     </div>
 
     <div class="guest-card guest-step" data-step="4">
 
-        <div class="guest-card-header">
-            <div class="guest-card-icon">
-                <i class="bi bi-vector-pen"></i>
-            </div>
-            <div>
-                <h2 class="guest-card-title">Tanda Tangan</h2>
-                <p class="guest-card-description">
-                    Bubuhkan tanda tangan Anda pada area berikut.
-                </p>
-            </div>
+        <div class="guest-card-header-center">
+            <h2 class="guest-card-title-center">Tanda Tangan</h2>
+            <p class="guest-card-description-center">
+                Bubuhkan tanda tangan Anda pada area berikut.
+            </p>
         </div>
+
+        <div class="guest-card-divider"></div>
 
         <div class="guest-signature" id="guestSignature">
             <canvas id="guestSignatureCanvas" class="guest-signature-canvas"></canvas>
@@ -402,7 +426,7 @@
             <button type="button" class="guest-btn guest-btn-secondary" data-prev="3">
                 <i class="bi bi-arrow-left"></i> Kembali
             </button>
-            <button type="button" class="guest-btn guest-btn-primary" data-next="5">
+            <button type="button" class="guest-btn guest-btn-glass-primary" data-next="5">
                 Lanjut <i class="bi bi-arrow-right"></i>
             </button>
         </div>
@@ -411,17 +435,15 @@
 
     <div class="guest-card guest-step" data-step="5">
 
-        <div class="guest-card-header">
-            <div class="guest-card-icon">
-                <i class="bi bi-shield-check"></i>
-            </div>
-            <div>
-                <h2 class="guest-card-title">Persetujuan Penggunaan Data</h2>
-                <p class="guest-card-description">
-                    Bacalah informasi berikut sebelum melanjutkan.
-                </p>
-            </div>
+        <div class="guest-card-header-center">
+
+            <h2 class="guest-card-title-center">Persetujuan Penggunaan Data</h2>
+            <p class="guest-card-description-center">
+                Bacalah informasi berikut sebelum melanjutkan.
+            </p>
         </div>
+
+        <div class="guest-card-divider"></div>
 
         <div class="guest-consent">
             <p class="guest-consent-text">
@@ -457,7 +479,7 @@
                 <span>Pengiriman formulir hanya dilakukan saat tersedia koneksi internet.</span>
             </div>
 
-            <button type="submit" class="guest-btn guest-btn-primary" id="guestSubmitBtn">
+            <button type="submit" class="guest-btn guest-btn-glass-primary" id="guestSubmitBtn">
                 <i class="bi bi-check-circle"></i> Kirim Registrasi
             </button>
         </div>

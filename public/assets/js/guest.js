@@ -1,3 +1,29 @@
+(function () {
+  'use strict';
+
+  const header = document.querySelector('.guest-header');
+  if (!header) return;
+
+  const THRESHOLD = 40;
+  let isScrolled = false;
+
+  function handleScroll() {
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > THRESHOLD && !isScrolled) {
+      header.classList.add('is-scrolled');
+      isScrolled = true;
+    } else if (currentScroll <= THRESHOLD && isScrolled) {
+      header.classList.remove('is-scrolled');
+      isScrolled = false;
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+})();
+
+
 document.addEventListener('DOMContentLoaded', function () {
 
     const form = document.getElementById('guestRegisterForm');
@@ -10,6 +36,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const totalSteps = 5;
     let currentStep = 1;
+
+    const stepIcons = {
+        1: 'bi-person-vcard',
+        2: 'bi-signpost-split',
+        3: 'bi-camera',
+        4: 'bi-vector-pen',
+        5: 'bi-shield-check',
+    };
 
     const progressFill = document.getElementById('guestProgressFill');
     const progressSteps = document.querySelectorAll('.guest-progress-step');
@@ -42,10 +76,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
             el.classList.toggle('is-active', elStep === step);
             el.classList.toggle('is-completed', elStep < step);
+
+            const dot = el.querySelector('.guest-progress-dot');
+            if (dot) {
+                if (elStep < step) {
+                    dot.innerHTML = '<i class="bi bi-check-lg"></i>';
+                } else {
+                    const iconClass = stepIcons[elStep] || 'bi-circle';
+                    dot.innerHTML = '<i class="bi ' + iconClass + '"></i>';
+                }
+            }
         });
 
         if (progressFill) {
-            const percent = (step / totalSteps) * 100;
+            const percent = ((step - 1) / (totalSteps - 1)) * 100;
             progressFill.style.width = percent + '%';
         }
 

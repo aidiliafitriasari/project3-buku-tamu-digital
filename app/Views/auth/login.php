@@ -10,7 +10,9 @@
     <div class="text-center">
 
         <div class="brand-icon">
-            <i class="bi bi-person-lock"></i>
+            <img
+                src="<?= base_url('assets/icons/icon-192.png') ?>"
+                alt="Logo Buku Tamu Digital">
         </div>
 
         <h1 class="login-title fs-4 mb-2">

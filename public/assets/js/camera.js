@@ -13,6 +13,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const fallbackBox = document.getElementById('guestCameraFallback');
     const fallbackInput = document.getElementById('photo_fallback');
 
+    const fallbackPreview = document.getElementById('guestFallbackPreview');
+    const fallbackPhoto = document.getElementById('guestFallbackPhoto');
+    const fallbackFileName = document.getElementById('guestFallbackFileName');
+
+    let fallbackPreviewUrl = null;
+
     const btnStart = document.getElementById('guestCameraStart');
     const btnCapture = document.getElementById('guestCameraCapture');
     const btnRetake = document.getElementById('guestCameraRetake');
@@ -240,13 +246,49 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (fallbackInput) {
         fallbackInput.addEventListener('change', function () {
+            const file = fallbackInput.files && fallbackInput.files[0];
+
+            if (!file) {
+                return;
+            }
+
+            if (fallbackPreviewUrl) {
+                URL.revokeObjectURL(fallbackPreviewUrl);
+                fallbackPreviewUrl = null;
+            }
+
+            fallbackPreviewUrl = URL.createObjectURL(file);
+
+            if (fallbackPhoto && fallbackPreview) {
+                fallbackPhoto.src = fallbackPreviewUrl;
+                fallbackPreview.hidden = false;
+            }
+
+            if (fallbackFileName) {
+                fallbackFileName.textContent = file.name;
+            }
+
+            if (photo) {
+                photo.hidden = true;
+            }
+
+            video.hidden = true;
+            placeholder.hidden = true;
+
+
             notifyChange();
         });
     }
 
     function notifyChange() {
+        const fallbackFile = fallbackInput &&
+            fallbackInput.files &&
+            fallbackInput.files.length > 0;
+
+        const hasPhoto = capturedBlob !== null || fallbackFile;
+
         const event = new CustomEvent('photo:changed', {
-            detail: { hasPhoto: capturedBlob !== null },
+            detail: { hasPhoto: hasPhoto },
         });
 
         if (cameraWrapper) {
