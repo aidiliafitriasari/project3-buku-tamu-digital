@@ -3,52 +3,41 @@
 <?= $this->section('content') ?>
 
 <!-- CARD: Selamat Datang -->
-<div class="guest-card">
+<div class="guest-card guest-welcome-card">
 
-    <div class="guest-card-header">
+    <div class="guest-card-header-center">
+        <h2 class="guest-card-title-center">
+            Buku Tamu Digital
+        </h2>
 
-        <div class="guest-card-icon">
-            <i class="bi bi-journal-text"></i>
-        </div>
-
-        <div>
-            <h2 class="guest-card-title">
-                Buku Tamu Digital
-            </h2>
-
-            <p class="guest-card-description">
-                Selamat datang. Silakan lakukan registrasi kunjungan
-                sebelum masuk ke area instansi.
-            </p>
-        </div>
-
+        <p class="guest-card-description-center">
+            Selamat datang. Silakan lakukan registrasi kunjungan
+            sebelum masuk ke area instansi.
+        </p>
     </div>
+
+    <div class="guest-card-divider"></div>
 
 </div>
 
 <!-- HERO GRID: 2 Kolom -->
-<div class="guest-hero-grid">
+<div class="guest-landing-grid">
 
     <!-- CARD: Yang Perlu Disiapkan -->
     <div class="guest-card">
 
-        <div class="guest-card-header">
+        <div class="guest-card-header-center">
+            <h2 class="guest-card-title-center">
+                Yang Perlu Disiapkan
+            </h2>
 
-            <div class="guest-card-icon">
-                <i class="bi bi-clipboard-check"></i>
-            </div>
-
-            <div>
-                <h2 class="guest-card-title">
-                    Yang Perlu Disiapkan
-                </h2>
-
-                <p class="guest-card-description">
-                    Pastikan Anda menyiapkan hal berikut sebelum registrasi.
-                </p>
-            </div>
+            <p class="guest-card-description-center">
+                Pastikan Anda menyiapkan hal berikut sebelum registrasi.
+            </p>
 
         </div>
+
+        <div class="guest-card-divider"></div>
 
         <ul class="guest-list">
 
@@ -89,23 +78,18 @@
     <!-- CARD: Setelah Registrasi -->
     <div class="guest-card">
 
-        <div class="guest-card-header">
+        <div class="guest-card-header-center">
+            <h2 class="guest-card-title-center">
+                Setelah Registrasi
+            </h2>
 
-            <div class="guest-card-icon">
-                <i class="bi bi-info-circle"></i>
-            </div>
-
-            <div>
-                <h2 class="guest-card-title">
-                    Setelah Registrasi
-                </h2>
-
-                <p class="guest-card-description">
-                    Berikut yang akan Anda dapatkan setelah registrasi.
-                </p>
-            </div>
+            <p class="guest-card-description-center">
+                Berikut yang akan Anda dapatkan setelah registrasi.
+            </p>
 
         </div>
+
+        <div class="guest-card-divider"></div>
 
         <ul class="guest-list">
 
@@ -138,7 +122,7 @@
 <!-- TOMBOL MULAI -->
 <a
     href="<?= base_url('pendaftaran') ?>"
-    class="guest-btn guest-btn-primary guest-btn-block">
+    class="guest-btn guest-btn-glass-primary guest-start-button">
 
     <i class="bi bi-arrow-right-circle"></i>
 

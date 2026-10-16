@@ -37,6 +37,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const totalSteps = 5;
     let currentStep = 1;
 
+    const stepIcons = {
+        1: 'bi-person-vcard',
+        2: 'bi-signpost-split',
+        3: 'bi-camera',
+        4: 'bi-vector-pen',
+        5: 'bi-shield-check',
+    };
+
     const progressFill = document.getElementById('guestProgressFill');
     const progressSteps = document.querySelectorAll('.guest-progress-step');
     const steps = document.querySelectorAll('.guest-step');
@@ -68,10 +76,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
             el.classList.toggle('is-active', elStep === step);
             el.classList.toggle('is-completed', elStep < step);
+
+            const dot = el.querySelector('.guest-progress-dot');
+            if (dot) {
+                if (elStep < step) {
+                    dot.innerHTML = '<i class="bi bi-check-lg"></i>';
+                } else {
+                    const iconClass = stepIcons[elStep] || 'bi-circle';
+                    dot.innerHTML = '<i class="bi ' + iconClass + '"></i>';
+                }
+            }
         });
 
         if (progressFill) {
-            const percent = (step / totalSteps) * 100;
+            const percent = ((step - 1) / (totalSteps - 1)) * 100;
             progressFill.style.width = percent + '%';
         }
 
