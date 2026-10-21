@@ -3,95 +3,104 @@
 <?= $this->section('content') ?>
 
 <div class="kiosk-card kiosk-success-card">
-
-    <div class="kiosk-success-icon">
-        <i class="bi bi-check-circle-fill"></i>
-    </div>
-
-    <h2 class="kiosk-success-title">
-        Registrasi Berhasil!
-    </h2>
-
-    <p class="kiosk-success-subtitle">
-        Kunjungan Anda telah tercatat. Silakan simpan kode & QR berikut.
-    </p>
-
-    <div class="kiosk-success-badge">
-        <span class="app-badge app-badge-menunggu">
-            <i class="bi bi-hourglass-split"></i>
-            Menunggu
-        </span>
-    </div>
-
-</div>
-
-<div class="kiosk-card">
-
-    <div class="kiosk-card-header">
-
-        <div class="kiosk-card-icon">
-            <i class="bi bi-clipboard-data"></i>
-        </div>
-
-        <div>
-            <h2 class="kiosk-card-title">
-                Data Kunjungan
+    <div class="kiosk-success-top">
+        <div class="kiosk-success-content">
+            <h2 class="kiosk-success-title">
+                Registrasi Berhasil!
             </h2>
-
-            <p class="kiosk-card-description">
-                Berikut detail kunjungan Anda.
+            <p class="kiosk-success-subtitle">
+                Kunjungan Anda telah berhasil dicatat dalam sistem buku tamu.
             </p>
         </div>
 
-    </div>
-
-    <div class="kiosk-detail-list">
-
-        <div class="kiosk-detail-item">
-            <span class="kiosk-detail-label">Nama Tamu</span>
-            <span class="kiosk-detail-value"><?= esc($visit['guest_name']) ?></span>
-        </div>
-
-        <div class="kiosk-detail-item">
-            <span class="kiosk-detail-label">Kode Kunjungan</span>
-            <span class="kiosk-detail-value kiosk-detail-code">
-                <?= esc($visit['visit_code']) ?>
+        <div class="kiosk-success-status">
+            <span class="kiosk-success-status-label">Status Kunjungan</span>
+            <span class="app-badge app-badge-menunggu">
+                <i class="bi bi-hourglass-split"></i> Menunggu
             </span>
         </div>
-
-        <div class="kiosk-detail-item">
-            <span class="kiosk-detail-label">Asal Instansi</span>
-            <span class="kiosk-detail-value"><?= esc($visit['origin_institution']) ?></span>
-        </div>
-
-        <div class="kiosk-detail-item">
-            <span class="kiosk-detail-label">Departemen Tujuan</span>
-            <span class="kiosk-detail-value"><?= esc($visit['department_name'] ?? '-') ?></span>
-        </div>
-
-        <div class="kiosk-detail-item">
-            <span class="kiosk-detail-label">Pegawai Tujuan</span>
-            <span class="kiosk-detail-value"><?= esc($visit['employee_name'] ?? '-') ?></span>
-        </div>
-
-        <div class="kiosk-detail-item">
-            <span class="kiosk-detail-label">Keperluan</span>
-            <span class="kiosk-detail-value"><?= esc($visit['purpose_name'] ?? '-') ?></span>
-        </div>
-
-        <div class="kiosk-detail-item">
-            <span class="kiosk-detail-label">Jumlah Rombongan</span>
-            <span class="kiosk-detail-value"><?= esc($visit['group_count']) ?> orang</span>
-        </div>
-
-        <div class="kiosk-detail-item">
-            <span class="kiosk-detail-label">Waktu Kedatangan</span>
-            <span class="kiosk-detail-value">
-                <?= esc(date('d M Y, H:i', strtotime($visit['arrival_at']))) ?>
-            </span>
-        </div>
-
     </div>
+
+    <div class="kiosk-success-next">
+        <div class="kiosk-success-next-icon">
+            <i class="bi bi-info-circle"></i>
+        </div>
+        <div class="kiosk-success-next-content">
+            <h2>Langkah Selanjutnya</h2>
+            <p>
+                Silakan datang ke resepsionis atau petugas untuk melakukan pengecekan dan verifikasi data kunjungan Anda.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="kiosk-card kiosk-detail-card">
+
+    <details class="kiosk-detail-collapse">
+
+        <summary class="kiosk-detail-summary">
+
+            <div class="kiosk-card-icon">
+                <i class="bi bi-clipboard-data"></i>
+            </div>
+
+            <span class="kiosk-detail-summary-content">
+                <span class="kiosk-card-title">Detail Kunjungan</span>
+                <span class="kiosk-card-description">Lihat informasi lengkap kunjungan Anda.</span>
+            </span>
+
+            <i class="bi bi-chevron-down kiosk-detail-chevron"></i>
+
+        </summary>
+        <div class="kiosk-detail-list">
+
+            <div class="kiosk-detail-item">
+                <span class="kiosk-detail-label">Nama Tamu</span>
+                <span class="kiosk-detail-value"><?= esc($visit['guest_name']) ?></span>
+            </div>
+
+            <div class="kiosk-detail-item">
+                <span class="kiosk-detail-label">Kode Kunjungan</span>
+                <span class="kiosk-detail-value kiosk-detail-code">
+                    <?= esc($visit['visit_code']) ?>
+                </span>
+            </div>
+
+            <div class="kiosk-detail-item">
+                <span class="kiosk-detail-label">Asal Instansi</span>
+                <span class="kiosk-detail-value"><?= esc($visit['origin_institution']) ?></span>
+            </div>
+
+            <div class="kiosk-detail-item">
+                <span class="kiosk-detail-label">Departemen Tujuan</span>
+                <span class="kiosk-detail-value"><?= esc($visit['department_name'] ?? '-') ?></span>
+            </div>
+
+            <div class="kiosk-detail-item">
+                <span class="kiosk-detail-label">Pegawai Tujuan</span>
+                <span class="kiosk-detail-value"><?= esc($visit['employee_name'] ?? '-') ?></span>
+            </div>
+
+            <div class="kiosk-detail-item">
+                <span class="kiosk-detail-label">Keperluan</span>
+                <span class="kiosk-detail-value"><?= esc($visit['purpose_name'] ?? '-') ?></span>
+            </div>
+
+            <div class="kiosk-detail-item">
+                <span class="kiosk-detail-label">Jumlah Rombongan</span>
+                <span class="kiosk-detail-value"><?= esc($visit['group_count']) ?> orang</span>
+            </div>
+
+            <div class="kiosk-detail-item">
+                <span class="kiosk-detail-label">Waktu Kedatangan</span>
+                <span class="kiosk-detail-value">
+                    <?= esc(date('d M Y, H:i', strtotime($visit['arrival_at']))) ?>
+                </span>
+            </div>
+
+        </div>
+
+    </details>
 
 </div>
 

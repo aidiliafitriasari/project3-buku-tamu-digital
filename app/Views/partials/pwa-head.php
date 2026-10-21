@@ -1,7 +1,7 @@
 <!-- PWA META TAGS -->
 <link rel="manifest" href="<?= base_url('manifest.json') ?>">
 
-<meta name="theme-color" content="#00309F">
+<meta name="theme-color" content="<?= esc($primaryColor ?? '#2d6a4f') ?>">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">

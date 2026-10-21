@@ -1,11 +1,5 @@
 <?= $this->extend('layouts/kiosk') ?>
 
-<?= $this->section('styles') ?>
-<link rel="stylesheet" href="<?= base_url('assets/css/guest.css') ?>">
-<link rel="stylesheet" href="<?= base_url('assets/css/guest/media.css') ?>">
-<link rel="stylesheet" href="<?= base_url('assets/css/guest/consent.css') ?>">
-<?= $this->endSection() ?>
-
 <?= $this->section('content') ?>
 
 <div class="guest-page-header">

@@ -1,3 +1,4 @@
+/* --- BASE STYLE (GUEST) --- */
 .guest-consent {
   display: flex;
   flex-direction: column;
@@ -104,7 +105,7 @@
   letter-spacing: -0.01em;
 }
 
-/* CONSENT — CHECKED STATE */
+/* CHECKED STATE */
 .guest-consent-checkbox:has(input[type="checkbox"]:checked) {
   background: linear-gradient(
     145deg,
@@ -119,7 +120,7 @@
     0 7px 22px rgba(var(--app-primary-rgb), 0.07);
 }
 
-/* CONSENT — PRESS INTERACTION */
+/* PRESS INTERACTION */
 @media (hover: none) and (pointer: coarse) {
   .guest-consent-checkbox:active {
     transform: scale(0.985);
@@ -127,7 +128,7 @@
   }
 }
 
-/* CONSENT — RESPONSIVE */
+/* RESPONSIVE */
 @media (max-width: 480px) {
   .guest-consent {
     gap: 13px;
@@ -156,10 +157,61 @@
   }
 }
 
-/* CONSENT — REDUCED MOTION */
+/* REDUCED MOTION */
 @media (prefers-reduced-motion: reduce) {
   .guest-consent-checkbox {
     transition: none;
     transform: none;
+  }
+}
+
+#kiosk-app .guest-consent {
+  gap: 12px;
+}
+
+#kiosk-app .guest-consent-text {
+  padding: 14px 16px;
+  font-size: 11px;
+  line-height: 1.65;
+  border-radius: 18px;
+}
+
+#kiosk-app .guest-consent-checkbox {
+  gap: 11px;
+  padding: 13px 15px;
+  border-radius: 18px;
+}
+
+#kiosk-app .guest-consent-checkbox input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+}
+
+#kiosk-app .guest-consent-checkbox span {
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* KIOSK LANDSCAPE OVERRIDE */
+@media (orientation: landscape) and (min-width: 768px) {
+  #kiosk-app .guest-consent {
+    gap: 9px;
+  }
+
+  #kiosk-app .guest-consent-text {
+    padding: 10px 14px;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  #kiosk-app .guest-consent-checkbox {
+    padding: 10px 13px;
+    gap: 10px;
+  }
+
+  #kiosk-app .guest-consent-checkbox span {
+    font-size: 11px;
+    line-height: 1.45;
   }
 }
