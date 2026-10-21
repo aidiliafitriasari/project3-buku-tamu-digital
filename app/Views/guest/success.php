@@ -116,9 +116,9 @@
 
         <summary class="guest-detail-summary">
 
-            <span class="guest-card-icon">
+            <div class="guest-card-icon">
                 <i class="bi bi-clipboard-data"></i>
-            </span>
+            </div>
 
             <span class="guest-detail-summary-content">
                 <span class="guest-card-title">Detail Kunjungan</span>

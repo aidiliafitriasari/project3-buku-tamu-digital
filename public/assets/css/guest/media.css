@@ -1,3 +1,6 @@
+/* =====================================================
+   GUEST & KIOSK — CAMERA & SIGNATURE
+   ===================================================== */
 .guest-camera {
   display: flex;
   flex-direction: column;
@@ -65,6 +68,7 @@
 
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.2);
+
   border-radius: 22px;
 
   backdrop-filter: blur(16px);
@@ -93,7 +97,6 @@
   border-radius: var(--app-radius-pill);
 }
 
-/* CAMERA — SECONDARY ACTION */
 #guestCameraStart,
 #guestCameraRetake,
 #guestCameraStop {
@@ -171,7 +174,6 @@
     0 6px 20px rgba(15, 23, 42, 0.04);
 }
 
-/* FALLBACK — HEADING */
 .guest-fallback-heading {
   display: flex;
   align-items: center;
@@ -215,7 +217,6 @@
   font-size: 11px;
 }
 
-/* FALLBACK — UPLOAD BUTTON */
 .guest-fallback-upload {
   min-height: 52px;
   padding: 12px 16px;
@@ -277,7 +278,6 @@
   border: 0;
 }
 
-/* FALLBACK — PHOTO PREVIEW */
 .guest-fallback-preview {
   margin-top: 16px;
   padding: 10px;
@@ -305,7 +305,6 @@
   border-radius: var(--app-radius-md);
 }
 
-/* FALLBACK — FILE INFORMATION */
 .guest-fallback-file-info {
   display: flex;
   align-items: center;
@@ -345,7 +344,6 @@
   font-weight: 600;
 }
 
-/* SIGNATURE */
 .guest-signature {
   display: flex;
   flex-direction: column;
@@ -381,7 +379,6 @@
   flex: 1;
 }
 
-/* RESPONSIVE */
 @media (max-width: 575.98px) {
   .guest-camera {
     gap: 14px;
@@ -434,7 +431,6 @@
   }
 }
 
-/* TOUCH FEEDBACK */
 @media (hover: none) {
   .guest-camera-actions .guest-btn:active,
   .guest-signature-actions .guest-btn:active {
@@ -442,7 +438,152 @@
   }
 }
 
-/* VISIBILITY — RESPECT HTML HIDDEN ATTRIBUTE */
 .guest-camera [hidden] {
+  display: none !important;
+}
+
+/* KIOSK OVERRIDE — CAMERA & SIGNATURE */
+#kiosk-app .guest-camera {
+  gap: 10px;
+}
+#kiosk-app .guest-camera-preview {
+  width: 100%;
+  max-height: 280px;
+  aspect-ratio: 3 / 4;
+  border-radius: 20px;
+}
+#kiosk-app .guest-camera-placeholder {
+  gap: 8px;
+  font-size: 12px;
+}
+#kiosk-app .guest-camera-placeholder i {
+  width: 54px;
+  height: 54px;
+  font-size: 24px;
+  border-radius: 18px;
+}
+#kiosk-app .guest-camera-actions {
+  gap: 8px;
+}
+#kiosk-app .guest-camera-actions .guest-btn {
+  min-height: 44px;
+  min-width: 110px;
+  padding: 10px 14px;
+}
+#kiosk-app .guest-camera-error {
+  padding: 10px 12px;
+  font-size: 11px;
+}
+#kiosk-app .guest-camera-fallback {
+  padding: 12px;
+}
+#kiosk-app .guest-fallback-heading {
+  gap: 9px;
+  margin-bottom: 10px;
+}
+#kiosk-app .guest-fallback-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 13px;
+}
+#kiosk-app .guest-fallback-icon i {
+  font-size: 17px;
+}
+#kiosk-app .guest-fallback-upload {
+  min-height: 44px;
+  padding: 9px 14px;
+  font-size: 12px;
+}
+#kiosk-app .guest-fallback-preview {
+  margin-top: 10px;
+  padding: 8px;
+}
+#kiosk-app .guest-fallback-preview img {
+  max-height: 200px;
+}
+#kiosk-app .guest-signature {
+  gap: 9px;
+}
+#kiosk-app .guest-signature-canvas {
+  height: 170px;
+  border-radius: 18px;
+}
+#kiosk-app .guest-signature-actions {
+  gap: 8px;
+}
+#kiosk-app .guest-signature-actions .guest-btn {
+  min-height: 44px;
+}
+
+@media (orientation: portrait) {
+  #kiosk-app .guest-camera-preview {
+    max-height: 260px;
+  }
+  #kiosk-app .guest-signature-canvas {
+    height: 160px;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 768px) {
+  #kiosk-app .guest-camera {
+    gap: 8px;
+  }
+  #kiosk-app .guest-camera-preview {
+    min-height: 260px;
+    max-height: 320px;
+    aspect-ratio: 16 / 9;
+  }
+  #kiosk-app .guest-camera-placeholder i {
+    width: 46px;
+    height: 46px;
+    font-size: 21px;
+  }
+  #kiosk-app .guest-camera-actions .guest-btn {
+    min-height: 40px;
+  }
+  #kiosk-app .guest-camera-fallback {
+    padding: 10px;
+  }
+  #kiosk-app .guest-fallback-heading {
+    margin-bottom: 8px;
+  }
+  #kiosk-app .guest-fallback-preview img {
+    max-height: 130px;
+  }
+  #kiosk-app .guest-signature {
+    gap: 7px;
+  }
+  #kiosk-app .guest-signature-canvas {
+    min-height: 180px;
+    max-height: 220px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  #kiosk-app .guest-camera-preview {
+    max-height: 230px;
+  }
+  #kiosk-app .guest-camera-actions .guest-btn {
+    flex: 1 1 100%;
+    min-height: 42px;
+  }
+  #kiosk-app .guest-signature-canvas {
+    height: 145px;
+  }
+  #kiosk-app .guest-fallback-preview img {
+    max-height: 180px;
+  }
+}
+
+@media (max-width: 380px) {
+  #kiosk-app .guest-camera-preview {
+    max-height: 200px;
+  }
+  #kiosk-app .guest-signature-canvas {
+    height: 130px;
+  }
+}
+
+#kiosk-app .guest-camera [hidden] {
   display: none !important;
 }
