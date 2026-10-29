@@ -33,11 +33,11 @@
 
         <div class="error-card">
 
-            <div class="error-icon">
-                <i class="bi bi-server"></i>
+            <div class="error-illustration">
+                <img
+                    src="<?= base_url('assets/images/errors/500-error.png') ?>"
+                    alt="Ilustrasi internal server error 500">
             </div>
-
-            <p class="error-code">500</p>
 
             <h1 class="error-title">
                 Terjadi Kesalahan

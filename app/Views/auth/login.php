@@ -9,10 +9,11 @@
     <!-- Brand -->
     <div class="text-center">
 
-        <div class="brand-icon">
+        <div class="brand-logo-wrapper">
             <img
                 src="<?= base_url('assets/icons/icon-192.png') ?>"
-                alt="Logo Buku Tamu Digital">
+                alt="Logo Buku Tamu Digital"
+                class="login-brand-img">
         </div>
 
         <h1 class="login-title fs-4 mb-2">

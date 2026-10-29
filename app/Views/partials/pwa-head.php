@@ -1,11 +1,11 @@
 <!-- PWA META TAGS -->
 <link rel="manifest" href="<?= base_url('manifest.json') ?>">
 
-<meta name="theme-color" content="<?= esc($primaryColor ?? '#2d6a4f') ?>">
+<meta name="theme-color" content="<?= esc($primaryColor ?? '#00309F') ?>">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Buku Tamu">
 
 <link rel="apple-touch-icon" href="<?= base_url('assets/icons/apple-touch-icon.png') ?>">
@@ -15,3 +15,18 @@
 
 <!-- PWA Styles -->
 <link rel="stylesheet" href="<?= base_url('assets/css/pwa.css') ?>">
+
+<!-- REGISTER SERVICE WORKER -->
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('<?= base_url('sw.js') ?>')
+                .then(registration => {
+                    console.log('Service Worker berhasil didaftarkan:', registration.scope);
+                })
+                .catch(error => {
+                    console.error('Service Worker gagal didaftarkan:', error);
+                });
+        });
+    }
+</script>

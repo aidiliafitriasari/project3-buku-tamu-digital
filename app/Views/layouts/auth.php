@@ -53,16 +53,8 @@
 
     <main class="auth-wrapper">
 
-        <div class="auth-bg" aria-hidden="true">
-            <i class="bi bi-book auth-icon auth-icon-1"></i>
-            <i class="bi bi-pencil auth-icon auth-icon-2"></i>
-            <i class="bi bi-person-vcard auth-icon auth-icon-3"></i>
-            <i class="bi bi-clock auth-icon auth-icon-4"></i>
-            <i class="bi bi-camera auth-icon auth-icon-5"></i>
-            <i class="bi bi-check-circle auth-icon auth-icon-6"></i>
-            <i class="bi bi-qr-code auth-icon auth-icon-7"></i>
-            <i class="bi bi-person auth-icon auth-icon-8"></i>
-        </div>
+        <!-- Ambient Liquid Glass Background -->
+        <div class="auth-bg" aria-hidden="true"></div>
 
         <?= $this->renderSection('content') ?>
 
