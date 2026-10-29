@@ -1,84 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
+
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+
     <title><?= lang('Errors.badRequest') ?></title>
 
-    <style>
-        div.logo {
-            height: 200px;
-            width: 155px;
-            display: inline-block;
-            opacity: 0.08;
-            position: absolute;
-            top: 2rem;
-            left: 50%;
-            margin-left: -73px;
-        }
-        body {
-            height: 100%;
-            background: #fafafa;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            color: #777;
-            font-weight: 300;
-        }
-        h1 {
-            font-weight: lighter;
-            letter-spacing: normal;
-            font-size: 3rem;
-            margin-top: 0;
-            margin-bottom: 0;
-            color: #222;
-        }
-        .wrap {
-            max-width: 1024px;
-            margin: 5rem auto;
-            padding: 2rem;
-            background: #fff;
-            text-align: center;
-            border: 1px solid #efefef;
-            border-radius: 0.5rem;
-            position: relative;
-        }
-        pre {
-            white-space: normal;
-            margin-top: 1.5rem;
-        }
-        code {
-            background: #fafafa;
-            border: 1px solid #efefef;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            display: block;
-        }
-        p {
-            margin-top: 1.5rem;
-        }
-        .footer {
-            margin-top: 2rem;
-            border-top: 1px solid #efefef;
-            padding: 1em 2em 0 2em;
-            font-size: 85%;
-            color: #999;
-        }
-        a:active,
-        a:link,
-        a:visited {
-            color: #dd4814;
-        }
-    </style>
-</head>
-<body>
-<div class="wrap">
-    <h1>400</h1>
 
-    <p>
-        <?php if (ENVIRONMENT !== 'production') : ?>
-            <?= nl2br(esc($message)) ?>
-        <?php else : ?>
-            <?= lang('Errors.sorryBadRequest') ?>
-        <?php endif; ?>
-    </p>
-</div>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Error Page Styles -->
+    <link rel="stylesheet" href="<?= base_url('assets/css/tokens.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/error.css') ?>">
+</head>
+
+<body>
+    <main class="error-wrapper">
+        <section class="error-card">
+
+            <!-- Illustration -->
+            <div class="error-illustration">
+                <img
+                    src="<?= base_url('assets/images/errors/400-bad-request.png') ?>"
+                    alt="Ilustrasi bad request 400">
+            </div>
+
+            <!-- Title -->
+            <h1 class="error-title">
+                Permintaan Tidak Valid
+            </h1>
+
+            <!-- Error Message -->
+            <p class="error-description">
+                <?php if (ENVIRONMENT !== 'production') : ?>
+                    <?= nl2br(esc($message)) ?>
+                <?php else : ?>
+                    <?= lang('Errors.sorryBadRequest') ?>
+                <?php endif; ?>
+            </p>
+
+        </section>
+    </main>
 </body>
+
 </html>

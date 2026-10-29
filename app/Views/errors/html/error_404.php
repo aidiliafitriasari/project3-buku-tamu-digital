@@ -48,11 +48,11 @@
 
         <div class="error-card">
 
-            <div class="error-icon">
-                <i class="bi bi-compass"></i>
+            <div class="error-illustration">
+                <img
+                    src="<?= base_url('assets/images/errors/404-forbidden.png') ?>"
+                    alt="Ilustrasi halaman tidak ditemukan 404">
             </div>
-
-            <p class="error-code">404</p>
 
             <h1 class="error-title">
                 Halaman Tidak Ditemukan

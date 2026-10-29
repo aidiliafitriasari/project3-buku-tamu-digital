@@ -5,6 +5,7 @@
   --app-primary-light: #40916c;
   --app-primary-soft: rgba(45, 106, 79, 0.08);
   --app-primary-soft-hover: rgba(45, 106, 79, 0.12);
+  --app-primary-rgb: 45, 106, 79;
 
   /* Warna aksen dan elemen pendukung */
   --app-gold: #52b788;

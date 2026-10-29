@@ -38,7 +38,9 @@ $isActive = static function (
     <div class="sidebar-brand">
 
         <div class="sidebar-brand-icon">
-            <i class="bi bi-building"></i>
+            <img
+                src="<?= base_url('assets/icons/icon-192.png') ?>"
+                alt="Logo Buku Tamu">
         </div>
 
         <div class="sidebar-brand-text">

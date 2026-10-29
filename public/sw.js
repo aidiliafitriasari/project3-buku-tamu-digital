@@ -17,61 +17,52 @@ const PRECACHE_URLS = [
     '/assets/icons/icon-512.png',
     '/assets/icons/apple-touch-icon.png',
     '/assets/icons/favicon-32x32.png',
-    '/assets/icons/favicon-16x16.png',
+    '/assets/icons/favicon-16x16.png'
 ];
 
 // INSTALL
 self.addEventListener('install', (event) => {
     console.log('[SW] Installing...');
-
     event.waitUntil(
-        caches.open(CACHE_VERSION)
-            .then((cache) => {
-                console.log('[SW] Precaching aset statis');
-                return cache.addAll(PRECACHE_URLS);
-            })
-            .then(() => {
-                console.log('[SW] Install selesai');
-                return self.skipWaiting();
-            })
+        caches.open(CACHE_VERSION).then((cache) => {
+            console.log('[SW] Precaching aset statis');
+            return Promise.all(
+                PRECACHE_URLS.map(url => {
+                    return cache.add(url).catch(err => console.warn('[SW] Gagal cache:', url));
+                })
+            );
+        }).then(() => {
+            console.log('[SW] Install selesai');
+            return self.skipWaiting();
+        })
     );
 });
 
-// ACTIVATE — Hapus cache lama
 self.addEventListener('activate', (event) => {
     console.log('[SW] Activating...');
-
     event.waitUntil(
-        caches.keys()
-            .then((cacheNames) => {
-                return Promise.all(
-                    cacheNames
-                        .filter((name) => name !== CACHE_VERSION)
-                        .map((name) => {
-                            console.log('[SW] Hapus cache lama:', name);
-                            return caches.delete(name);
-                        })
-                );
-            })
-            .then(() => {
-                console.log('[SW] Activate selesai');
-                return self.clients.claim();
-            })
+        caches.keys().then((cacheNames) => {
+            return Promise.all(
+                cacheNames
+                    .filter((name) => name !== CACHE_VERSION)
+                    .map((name) => {
+                        console.log('[SW] Hapus cache lama:', name);
+                        return caches.delete(name);
+                    })
+            );
+        }).then(() => {
+            console.log('[SW] Activate selesai');
+            return self.clients.claim();
+        })
     );
 });
 
-// FETCH — Strategi cache
 self.addEventListener('fetch', (event) => {
     const request = event.request;
     const url = new URL(request.url);
 
-    if (request.method !== 'GET') {
-        return;
-    }
-
-    if (url.origin !== location.origin) {
-        return;
-    }
+    if (request.method !== 'GET') return;
+    if (url.origin !== location.origin) return;
 
     if (url.pathname.startsWith('/uploads/') ||
         url.pathname.includes('/photo/') ||
@@ -88,76 +79,45 @@ self.addEventListener('fetch', (event) => {
 
     if (url.pathname.startsWith('/assets/')) {
         event.respondWith(
-            caches.match(request)
-                .then((cached) => {
-                    if (cached) {
-                        return cached;
+            caches.match(request).then((cached) => {
+                if (cached) return cached;
+                return fetch(request).then((response) => {
+                    if (response && response.status === 200) {
+                        const clone = response.clone();
+                        caches.open(CACHE_VERSION).then((cache) => cache.put(request, clone));
                     }
-
-                    return fetch(request).then((response) => {
-                        if (response && response.status === 200) {
-                            const clone = response.clone();
-                            caches.open(CACHE_VERSION).then((cache) => {
-                                cache.put(request, clone);
-                            });
-                        }
-                        return response;
-                    });
-                })
-                .catch(() => {
-                    return caches.match('/offline.html');
-                })
+                    return response;
+                });
+            }).catch(() => caches.match('/offline.html'))
         );
         return;
     }
 
-        // HALAMAN HTML
     event.respondWith(
-        fetch(request)
-            .then((response) => {
-                if (response && response.status === 200) {
-                    if (url.pathname === '/' ||
-                        url.pathname === '/pendaftaran' ||
-                        url.pathname === '/kiosk') {
-                        const clone = response.clone();
-                        caches.open(CACHE_VERSION).then((cache) => {
-                            cache.put(request, clone);
-                        });
-                    }
+        fetch(request).then((response) => {
+            if (response && response.status === 200) {
+                if (url.pathname === '/' || url.pathname === '/pendaftaran' || url.pathname === '/kiosk') {
+                    const clone = response.clone();
+                    caches.open(CACHE_VERSION).then((cache) => cache.put(request, clone));
                 }
-                return response;
-            })
-            .catch(() => {
-                return caches.match(request)
-                    .then((cached) => {
-                        if (cached) {
-                            return cached;
-                        }
+            }
+            return response;
+        }).catch(() => {
+            return caches.match(request).then((cached) => {
+                if (cached) return cached;
 
-                        var acceptHeader = request.headers.get('accept') || '';
-                        var isHtmlRequest = acceptHeader.includes('text/html');
-                        var isApiRequest = acceptHeader.includes('application/json') ||
-                                          request.headers.get('x-requested-with') === 'XMLHttpRequest';
+                var acceptHeader = request.headers.get('accept') || '';
+                var isHtmlRequest = acceptHeader.includes('text/html');
+                var isApiRequest = acceptHeader.includes('application/json') || request.headers.get('x-requested-with') === 'XMLHttpRequest';
 
-                        if (isApiRequest && !isHtmlRequest) {
-                            return new Response(
-                                JSON.stringify({
-                                    success: false,
-                                    message: 'Anda sedang offline.',
-                                    offline: true
-                                }),
-                                {
-                                    status: 503,
-                                    statusText: 'Offline',
-                                    headers: {
-                                        'Content-Type': 'application/json'
-                                    }
-                                }
-                            );
-                        }
-
-                        return caches.match('/offline.html');
-                    });
-            })
+                if (isApiRequest && !isHtmlRequest) {
+                    return new Response(
+                        JSON.stringify({ success: false, message: 'Anda sedang offline.', offline: true }),
+                        { status: 503, statusText: 'Offline', headers: { 'Content-Type': 'application/json' } }
+                    );
+                }
+                return caches.match('/offline.html');
+            });
+        })
     );
 });

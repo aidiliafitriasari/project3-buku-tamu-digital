@@ -44,11 +44,11 @@
 
         <div class="error-card">
 
-            <div class="error-icon">
-                <i class="bi bi-shield-lock"></i>
+            <div class="error-illustration">
+                <img
+                    src="<?= base_url('assets/images/errors/403-forbidden.png') ?>"
+                    alt="Ilustrasi akses ditolak 403">
             </div>
-
-            <p class="error-code">403</p>
 
             <h1 class="error-title">
                 Akses Ditolak
